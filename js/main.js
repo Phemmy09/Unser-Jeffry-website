@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavbar();
   initEmailForms();
+  initVSLVideo();
 });
 
 /* Scroll-triggered animations */
@@ -149,6 +150,34 @@ function initEmailForms() {
       }
     });
   });
+}
+
+/* VSL video — autoplay on scroll, no YouTube branding */
+function initVSLVideo() {
+  const container = document.querySelector('[data-vsl]');
+  const iframe = container?.querySelector('iframe');
+  const playIndicator = container?.querySelector('.vsl-play-indicator');
+  if (!container || !iframe) return;
+
+  const baseSrc = iframe.src;
+  let started = false;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          /* Append autoplay + mute — muted is required by all browsers for scroll-triggered autoplay */
+          iframe.src = baseSrc + '&autoplay=1&mute=1';
+          if (playIndicator) playIndicator.style.opacity = '0';
+          observer.unobserve(container);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  observer.observe(container);
 }
 
 /* Typeform embed helper */
