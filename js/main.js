@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initNavbar();
   initEmailForms();
-  initVSLVideo();
 });
 
 /* Scroll-triggered animations */
@@ -150,97 +149,6 @@ function initEmailForms() {
       }
     });
   });
-}
-
-/* VSL video — autoplay on scroll, zero YouTube branding
- *
- * Strategy:
- *  1. No iframe in HTML — poster shown until scroll or click
- *  2. iframe injected with autoplay=1&mute=1 when triggered
- *  3. pointer-events:none on iframe stops ALL mouse events reaching
- *     YouTube (kills hover watermark entirely)
- *  4. Transparent overlay handles click → postMessage play/pause
- */
-function initVSLVideo() {
-  const container = document.querySelector('[data-vsl]');
-  if (!container) return;
-
-  const poster = container.querySelector('.vsl-poster');
-  let iframe = null;
-  let overlay = null;
-  let playing = false;
-  let loaded = false;
-
-  function postCmd(func) {
-    iframe && iframe.contentWindow && iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: func, args: [] }), '*'
-    );
-  }
-
-  function loadVideo() {
-    if (loaded) return;
-    loaded = true;
-
-    /* Inject iframe — no src in HTML means YouTube thumbnail never shown */
-    iframe = document.createElement('iframe');
-    iframe.className = 'vsl-iframe';
-    iframe.src = 'https://www.youtube-nocookie.com/embed/cqvDox9l2HU' +
-      '?controls=0&modestbranding=1&rel=0&iv_load_policy=3' +
-      '&playsinline=1&enablejsapi=1&autoplay=1&mute=1';
-    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-    iframe.allowFullscreen = true;
-    container.insertBefore(iframe, poster);
-
-    /* Transparent click overlay — sits above iframe, intercepts all clicks
-       so no mouse event ever reaches YouTube (kills hover watermark) */
-    overlay = document.createElement('div');
-    overlay.className = 'vsl-click-overlay';
-    container.appendChild(overlay);
-
-    /* Fade poster out once video has had time to start */
-    setTimeout(function () {
-      poster.style.opacity = '0';
-      poster.style.pointerEvents = 'none';
-    }, 900);
-
-    playing = true;
-
-    /* Click overlay → pause/resume via postMessage */
-    overlay.addEventListener('click', function () {
-      if (playing) {
-        postCmd('pauseVideo');
-        playing = false;
-        /* Show paused state — semi-transparent poster with play icon */
-        poster.style.opacity = '0.88';
-        poster.style.pointerEvents = 'none';
-      } else {
-        postCmd('playVideo');
-        playing = true;
-        poster.style.opacity = '0';
-      }
-    });
-  }
-
-  /* Clicking the poster before scroll also starts the video */
-  poster.addEventListener('click', function () {
-    observer.unobserve(container);
-    loadVideo();
-  });
-
-  /* Autoplay when 50% of the container enters the viewport */
-  var observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          loadVideo();
-          observer.unobserve(container);
-        }
-      });
-    },
-    { threshold: 0.5 }
-  );
-
-  observer.observe(container);
 }
 
 /* Typeform embed helper */

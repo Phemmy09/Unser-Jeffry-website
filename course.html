@@ -225,88 +225,14 @@
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       background: #000;
-      cursor: pointer;
     }
 
-    /* iframe injected by JS — pointer-events:none stops ALL mouse
-       events reaching YouTube, killing the hover watermark */
-    .vsl-iframe {
+    .vsl-container iframe {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       border: none;
-      pointer-events: none;
-    }
-
-    /* Transparent overlay that captures clicks for play/pause */
-    .vsl-click-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      cursor: pointer;
-    }
-
-    /* Poster shown before the video loads — uses actual course thumbnail */
-    .vsl-poster {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      background-image: url('assets/course-thumbnail.jpeg');
-      background-size: cover;
-      background-position: center;
-      z-index: 3;
-      transition: opacity 0.5s var(--ease-out);
-    }
-
-    /* Dark overlay so play button stays readable */
-    .vsl-poster::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.52);
-    }
-
-    .vsl-play-circle,
-    .vsl-poster-text {
-      position: relative;
-      z-index: 1;
-    }
-
-    .vsl-play-circle {
-      width: 72px;
-      height: 72px;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 40px var(--accent-glow-strong);
-      animation: pulse-glow 2.5s ease-in-out infinite;
-      transition: transform 0.3s var(--ease-out);
-    }
-
-    .vsl-poster:hover .vsl-play-circle {
-      transform: scale(1.1);
-    }
-
-    .vsl-play-circle svg {
-      width: 28px;
-      height: 28px;
-      margin-left: 4px;
-      fill: #fff;
-    }
-
-    .vsl-poster-text {
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
     }
 
     /* Trust Indicators */
@@ -845,15 +771,16 @@
         The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.
       </p>
 
-      <!-- VSL Video — iframe injected by JS on scroll, no YouTube shown until playing -->
+      <!-- VSL Video -->
       <div class="vsl-wrapper animate-on-scroll">
-        <div class="vsl-container" data-vsl>
-          <div class="vsl-poster">
-            <div class="vsl-play-circle">
-              <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
-            </div>
-            <span class="vsl-poster-text">Watch the overview</span>
-          </div>
+        <div class="vsl-container">
+          <iframe
+            src="https://www.youtube.com/embed/cqvDox9l2HU"
+            title="Build & Scale Your Digital Consulting Agency — @unsertheanswer"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
