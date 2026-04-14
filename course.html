@@ -225,37 +225,40 @@
       overflow: hidden;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       background: #000;
+      cursor: pointer;
     }
 
-    .vsl-container iframe {
+    /* iframe injected by JS — pointer-events:none stops ALL mouse
+       events reaching YouTube, killing the hover watermark */
+    .vsl-iframe {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       border: none;
-    }
-
-    /* Blocks the YouTube watermark that appears on hover (top-right) */
-    .vsl-brand-block {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 160px;
-      height: 56px;
-      z-index: 3;
       pointer-events: none;
-      background: transparent;
     }
 
-    /* Custom play button shown before autoplay triggers */
-    .vsl-play-indicator {
+    /* Transparent overlay that captures clicks for play/pause */
+    .vsl-click-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    /* Poster shown before the video loads — completely custom, no YouTube */
+    .vsl-poster {
       position: absolute;
       inset: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 2;
-      pointer-events: none;
+      gap: 1rem;
+      background: linear-gradient(135deg, var(--bg-card) 0%, rgba(59, 130, 246, 0.06) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.12);
+      z-index: 3;
       transition: opacity 0.5s var(--ease-out);
     }
 
@@ -269,6 +272,11 @@
       justify-content: center;
       box-shadow: 0 0 40px var(--accent-glow-strong);
       animation: pulse-glow 2.5s ease-in-out infinite;
+      transition: transform 0.3s var(--ease-out);
+    }
+
+    .vsl-poster:hover .vsl-play-circle {
+      transform: scale(1.1);
     }
 
     .vsl-play-circle svg {
@@ -276,6 +284,14 @@
       height: 28px;
       margin-left: 4px;
       fill: #fff;
+    }
+
+    .vsl-poster-text {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
     }
 
     /* Trust Indicators */
@@ -759,23 +775,14 @@
         The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.
       </p>
 
-      <!-- VSL Video -->
+      <!-- VSL Video — iframe injected by JS on scroll, no YouTube shown until playing -->
       <div class="vsl-wrapper animate-on-scroll">
         <div class="vsl-container" data-vsl>
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/cqvDox9l2HU?controls=0&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&enablejsapi=1&color=white"
-            title="Build & Scale Your Digital Consulting Agency"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
-          <!-- Covers YouTube watermark on hover -->
-          <div class="vsl-brand-block"></div>
-          <!-- Play button shown before scroll triggers autoplay -->
-          <div class="vsl-play-indicator">
+          <div class="vsl-poster">
             <div class="vsl-play-circle">
               <svg viewBox="0 0 24 24"><polygon points="8,5 20,12 8,19"/></svg>
             </div>
+            <span class="vsl-poster-text">Watch the overview</span>
           </div>
         </div>
       </div>
