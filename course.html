@@ -454,7 +454,13 @@
       margin-top: 3rem;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
@@ -751,15 +757,17 @@
         The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.
       </p>
 
-      <!-- VSL Video Placeholder -->
+      <!-- VSL Video -->
       <div class="vsl-wrapper animate-on-scroll">
-        <div class="vsl-placeholder">
-          <div class="vsl-placeholder__inner">
-            <div class="vsl-play-btn">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 20,12 8,19"/></svg>
-            </div>
-            <span class="vsl-text">Watch the overview</span>
-          </div>
+        <div style="position:relative; width:100%; padding-top:56.25%; border-radius:var(--radius-lg); overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.4);">
+          <iframe
+            src="https://www.youtube.com/embed/cqvDox9l2HU"
+            title="Build & Scale Your Digital Consulting Agency — @unsertheanswer"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            style="position:absolute; inset:0; width:100%; height:100%;">
+          </iframe>
         </div>
       </div>
 
@@ -972,41 +980,118 @@
   <section class="section relative z-10">
     <div class="container">
       <div class="text-center">
-        <span class="label animate-on-scroll">Results</span>
-        <h2 class="display-lg animate-on-scroll">Real People. Real Results.</h2>
+        <span class="label animate-on-scroll">Client Reviews</span>
+        <h2 class="display-lg animate-on-scroll">What Clients Are Saying</h2>
       </div>
 
       <div class="testimonials-grid stagger-children">
 
         <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">I went from doing freelance work for $500/month to running a team of four and closing $10K+ contracts. The frameworks in this course gave me the exact playbook I needed.</p>
+          <p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p>
           <div class="testimonial__author">
-            <div class="testimonial__avatar">JM</div>
+            <div class="testimonial__avatar">RC</div>
             <div>
-              <div class="testimonial__name">Jordan M.</div>
-              <div class="testimonial__role">From freelancer to $12K/mo agency</div>
+              <div class="testimonial__name">Roberto Coello</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
             </div>
           </div>
         </div>
 
         <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">The community alone is worth it. Having access to other agency owners and Unser's direct guidance accelerated my growth by at least 6 months. Closed my first client in week two.</p>
+          <p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p>
           <div class="testimonial__author">
-            <div class="testimonial__avatar">SK</div>
+            <div class="testimonial__avatar">AJ</div>
             <div>
-              <div class="testimonial__name">Sarah K.</div>
-              <div class="testimonial__role">First client in 14 days</div>
+              <div class="testimonial__name">Angela Jones</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
             </div>
           </div>
         </div>
 
         <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">I was stuck at $3K/mo for almost a year. After implementing Module 6 and 7, I booked 11 meetings in my first month of outreach. This stuff actually works.</p>
+          <p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p>
           <div class="testimonial__author">
-            <div class="testimonial__avatar">RT</div>
+            <div class="testimonial__avatar">JC</div>
             <div>
-              <div class="testimonial__name">Ray T.</div>
-              <div class="testimonial__role">11 meetings booked in 30 days</div>
+              <div class="testimonial__name">Jean-Yves Cadeus</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">AM</div>
+            <div>
+              <div class="testimonial__name">Aidan McDowell</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">MN</div>
+            <div>
+              <div class="testimonial__name">Mariah Nua</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">JR</div>
+            <div>
+              <div class="testimonial__name">Joanne Renwick</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">EK</div>
+            <div>
+              <div class="testimonial__name">Eric Karnezis</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">GP</div>
+            <div>
+              <div class="testimonial__name">Girish Prabhu</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">AI</div>
+            <div>
+              <div class="testimonial__name">Ashley Ingle</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">HK</div>
+            <div>
+              <div class="testimonial__name">Harris Robin Kalash</div>
+              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
             </div>
           </div>
         </div>
