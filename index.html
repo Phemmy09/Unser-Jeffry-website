@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@unsertheanswer — Digital Consulting | Agency Growth</title>
+  <meta name="description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Follow @unsertheanswer for tips on building and scaling your consulting agency.">
+  <meta name="author" content="@unsertheanswer">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="@unsertheanswer — Digital Consulting | Agency Growth">
+  <meta property="og:description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Follow @unsertheanswer for tips on building and scaling your consulting agency.">
+  <meta property="og:url" content="https://unsertheanswer.com">
+  <meta property="og:image" content="assets/og-image.jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="@unsertheanswer — Digital Consulting | Agency Growth">
+  <meta name="twitter:description" content="Digital Consulting, Agency Growth, and Prime Solution Media.">
+  <meta name="twitter:image" content="assets/og-image.jpeg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpeg">
+  <link rel="apple-touch-icon" href="assets/favicon.jpeg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Hub-specific Styles -->
+  <style>
+    /* ---- Hub Layout ---- */
+    .hub {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.25rem 4rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* ---- Hero ---- */
+    .hub-hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .hub-hero__glow {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow-strong) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+      filter: blur(40px);
+    }
+
+    .hub-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 1.25rem;
+      background: var(--bg-card);
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 24px var(--accent-glow-strong), 0 0 48px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      animation: pulse-glow 4s ease-in-out infinite;
+    }
+
+    .hub-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hub-avatar__placeholder {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-light);
+    }
+
+    .hub-hero__name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hub-hero__tagline {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.5;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ---- Social Icons ---- */
+    .hub-socials {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .hub-socials__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .hub-socials__link:hover {
+      color: var(--accent-light);
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .hub-socials__link svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* ---- Freebie Card ---- */
+    .hub-freebie {
+      width: 100%;
+      margin-bottom: 2rem;
+      padding: 1.75rem;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(22, 22, 31, 0.9) 0%, rgba(59, 130, 246, 0.06) 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .hub-freebie::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: var(--radius-lg);
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.4), rgba(59, 130, 246, 0.05), rgba(59, 130, 246, 0.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: gradient-shift 6s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    .hub-freebie__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .hub-freebie__badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent-glow-strong);
+    }
+
+    .hub-freebie__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.375rem;
+    }
+
+    .hub-freebie__subtitle {
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+    }
+
+    .hub-freebie .form-group {
+      display: flex;
+      gap: 0.625rem;
+    }
+
+    .hub-freebie .form-group .input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      border-radius: var(--radius-md);
+    }
+
+    .hub-freebie .form-group .btn {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.8125rem;
+      border-radius: var(--radius-md);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ---- Link Cards ---- */
+    .hub-links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .hub-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      background: rgba(22, 22, 31, 0.6);
+      border: 1px solid var(--border-color);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.35s var(--ease-out);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hub-link::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.04), transparent);
+      opacity: 0;
+      transition: opacity 0.35s var(--ease-out);
+    }
+
+    .hub-link:hover {
+      border-color: var(--border-hover);
+      background: rgba(28, 28, 40, 0.8);
+      transform: translateY(-2px) translateX(2px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .hub-link:hover::after {
+      opacity: 1;
+    }
+
+    .hub-link:nth-child(even) {
+      margin-left: 0.5rem;
+    }
+
+    .hub-link:nth-child(odd) {
+      margin-right: 0.5rem;
+    }
+
+    .hub-link__icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-light);
+      z-index: 1;
+      transition: all 0.35s var(--ease-out);
+    }
+
+    .hub-link:hover .hub-link__icon {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .hub-link__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .hub-link__content {
+      flex: 1;
+      min-width: 0;
+      z-index: 1;
+    }
+
+    .hub-link__title {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      line-height: 1.3;
+      margin-bottom: 0.125rem;
+    }
+
+    .hub-link__desc {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hub-link__arrow {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      z-index: 1;
+      transition: all 0.35s var(--ease-out);
+    }
+
+    .hub-link:hover .hub-link__arrow {
+      color: var(--accent-light);
+      transform: translateX(3px);
+    }
+
+    .hub-link__arrow svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ---- Footer ---- */
+    .hub-footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.6875rem;
+      letter-spacing: 0.02em;
+      line-height: 1.6;
+    }
+
+    .hub-footer span {
+      display: block;
+    }
+
+    .hub-footer__built {
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* ---- Mobile adjustments ---- */
+    @media (max-width: 480px) {
+      .hub {
+        padding: 2rem 1rem 3rem;
+      }
+
+      .hub-freebie .form-group {
+        flex-direction: column;
+      }
+
+      .hub-freebie .form-group .btn {
+        width: 100%;
+      }
+
+      .hub-link:nth-child(even),
+      .hub-link:nth-child(odd) {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--blue"></div>
+  <div class="bg-glow bg-glow--purple"></div>
+
+  <!-- Hub -->
+  <main class="hub">
+
+    <!-- Hero -->
+    <section class="hub-hero animate-on-scroll">
+      <div class="hub-hero__glow"></div>
+      <div class="hub-avatar">
+        <img src="assets/avatar.jpeg" alt="@unsertheanswer">
+      </div>
+      <h1 class="hub-hero__name">@unsertheanswer</h1>
+      <p class="hub-hero__tagline">Digital Consulting | Agency Growth | Prime Solution Media</p>
+
+      <!-- Social Icons -->
+      <div class="hub-socials">
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@unsertheanswer" class="hub-socials__link" aria-label="TikTok" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.16z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/unsertheanswer/" class="hub-socials__link" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44-.24.61-.52 1.05-.98 1.51-.46.46-.9.74-1.51.98-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.08 4.08 0 0 1-1.51-.98 4.08 4.08 0 0 1-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44.24-.61.52-1.05.98-1.51a4.08 4.08 0 0 1 1.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 0 0-2.09 1.36A5.77 5.77 0 0 0 .69 4.08C.39 4.84.19 5.72.13 6.99.07 8.27.06 8.68.06 11.94s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.36 2.09a5.77 5.77 0 0 0 2.09 1.36c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 0 0 2.09-1.36 5.77 5.77 0 0 0 1.36-2.09c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 0 0-1.36-2.09A5.77 5.77 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 0-2.88 0 1.44 1.44 0 0 0 2.88 0z"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@unsertheanswer" class="hub-socials__link" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.64 31.64 0 0 0 0 12a31.64 31.64 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.84.55 9.38.55 9.38.55s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.64 31.64 0 0 0 24 12a31.64 31.64 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+        </a>
+        <!-- Twitch -->
+        <a href="https://twitch.tv/unsertheanswer" class="hub-socials__link" aria-label="Twitch" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.57 4.71h1.71v5.14h-1.71V4.71zm4.7 0h1.72v5.14h-1.71V4.71zM4.29 0L1.71 4.29v17.14h5.15V24h3.42l3.43-2.57h4.28L23.14 16V0H4.29zm17.14 14.86l-3.43 3.43h-5.14L9.43 21.7v-3.43H5.14V1.71h16.29v13.15z"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Freebie Opt-in -->
+    <section class="hub-freebie animate-on-scroll">
+      <div class="hub-freebie__badge">Free Resource</div>
+      <h2 class="hub-freebie__title">Agency Growth Blueprint</h2>
+      <p class="hub-freebie__subtitle">Get the exact framework I used to scale my consulting agency.</p>
+      <form data-email-form data-form-action="#" data-redirect="freebie.html">
+        <div class="form-group">
+          <input type="email" class="input" placeholder="Enter your email" required aria-label="Email address">
+          <button type="submit" class="btn btn--primary">Get Free Access</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Link Cards -->
+    <div class="hub-links stagger-children">
+
+      <!-- The Course -->
+      <a href="course.html" class="hub-link animate-on-scroll">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">The Course</div>
+          <div class="hub-link__desc">Learn to build &amp; scale your digital consulting agency</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Prime Solution Media -->
+      <a href="https://primesolutionmedia.com" class="hub-link animate-on-scroll" target="_blank" rel="noopener">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">Prime Solution Media</div>
+          <div class="hub-link__desc">Full-service digital agency</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@unsertheanswer" class="hub-link animate-on-scroll" target="_blank" rel="noopener">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.64 31.64 0 0 0 0 12a31.64 31.64 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.84.55 9.38.55 9.38.55s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.64 31.64 0 0 0 24 12a31.64 31.64 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">YouTube</div>
+          <div class="hub-link__desc">Tutorials, vlogs &amp; behind the scenes</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@unsertheanswer" class="hub-link animate-on-scroll" target="_blank" rel="noopener">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.16z"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">TikTok</div>
+          <div class="hub-link__desc">Daily tips &amp; agency life</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/unsertheanswer/" class="hub-link animate-on-scroll" target="_blank" rel="noopener">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44-.24.61-.52 1.05-.98 1.51-.46.46-.9.74-1.51.98-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.08 4.08 0 0 1-1.51-.98 4.08 4.08 0 0 1-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44.24-.61.52-1.05.98-1.51a4.08 4.08 0 0 1 1.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 0 0-2.09 1.36A5.77 5.77 0 0 0 .69 4.08C.39 4.84.19 5.72.13 6.99.07 8.27.06 8.68.06 11.94s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.36 2.09a5.77 5.77 0 0 0 2.09 1.36c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 0 0 2.09-1.36 5.77 5.77 0 0 0 1.36-2.09c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 0 0-1.36-2.09A5.77 5.77 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 0-2.88 0 1.44 1.44 0 0 0 2.88 0z"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">Instagram</div>
+          <div class="hub-link__desc">@unsertheanswer</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+      <!-- Twitch -->
+      <a href="https://twitch.tv/unsertheanswer" class="hub-link animate-on-scroll" target="_blank" rel="noopener">
+        <div class="hub-link__icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.57 4.71h1.71v5.14h-1.71V4.71zm4.7 0h1.72v5.14h-1.71V4.71zM4.29 0L1.71 4.29v17.14h5.15V24h3.42l3.43-2.57h4.28L23.14 16V0H4.29zm17.14 14.86l-3.43 3.43h-5.14L9.43 21.7v-3.43H5.14V1.71h16.29v13.15z"/></svg>
+        </div>
+        <div class="hub-link__content">
+          <div class="hub-link__title">Twitch</div>
+          <div class="hub-link__desc">Live streams &amp; Q&amp;A sessions</div>
+        </div>
+        <div class="hub-link__arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="hub-footer animate-on-scroll">
+      <span>&copy; 2026 Prime Solution Media</span>
+      <span class="hub-footer__built">Built by PSM</span>
+    </footer>
+
+  </main>
+
+  <!-- Shared JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build & Scale Your Digital Consulting Agency — @unsertheanswer</title>
+  <meta name="description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
+  <meta name="author" content="@unsertheanswer">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Build & Scale Your Digital Consulting Agency — @unsertheanswer">
+  <meta property="og:description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
+  <meta property="og:image" content="assets/og-course.jpg">
+  <meta property="og:url" content="https://unsertheanswer.com/course">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Build & Scale Your Digital Consulting Agency — @unsertheanswer">
+  <meta name="twitter:description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
+  <meta name="twitter:image" content="assets/og-course.jpg">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Shared Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-Specific Styles -->
+  <style>
+    /* ============================================
+       Navbar
+       ============================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+      transition: all 0.35s var(--ease-out);
+      background: transparent;
+    }
+
+    .navbar--scrolled {
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 0;
+    }
+
+    .navbar--hidden {
+      transform: translateY(-100%);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .navbar__logo {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .navbar__menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .navbar__link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.25s var(--ease-out);
+    }
+
+    .navbar__link:hover {
+      color: var(--text-primary);
+    }
+
+    .navbar__cta {
+      padding: 0.625rem 1.5rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--radius-full);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .navbar__cta:hover {
+      background: var(--accent-hover);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    .navbar__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+      cursor: pointer;
+    }
+
+    .navbar__toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .navbar__toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .navbar__toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .navbar__toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 768px) {
+      .navbar__toggle {
+        display: flex;
+      }
+
+      .navbar__menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.5rem;
+        background: rgba(10, 10, 15, 0.97);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.35s var(--ease-out);
+      }
+
+      .navbar__menu--open {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .navbar__menu .navbar__link {
+        font-size: 1.25rem;
+      }
+
+      .navbar__menu .navbar__cta {
+        font-size: 1rem;
+        padding: 0.875rem 2rem;
+      }
+    }
+
+    /* ============================================
+       Hero
+       ============================================ */
+    .hero {
+      padding-top: clamp(7rem, 14vw, 10rem);
+      padding-bottom: var(--section-padding);
+      text-align: center;
+    }
+
+    .hero__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-light);
+      margin-bottom: 1.5rem;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .hero__headline {
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .hero__sub {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* VSL Video Placeholder */
+    .vsl-wrapper {
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .vsl-placeholder {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s var(--ease-out);
+    }
+
+    .vsl-placeholder:hover {
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .vsl-placeholder__inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .vsl-play-btn {
+      width: 72px;
+      height: 72px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px var(--accent-glow-strong);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .vsl-placeholder:hover .vsl-play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 0 50px var(--accent-glow-strong);
+    }
+
+    .vsl-play-btn svg {
+      width: 28px;
+      height: 28px;
+      margin-left: 3px;
+      fill: #fff;
+    }
+
+    .vsl-text {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Trust Indicators */
+    .trust-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .trust-item__value {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .trust-item__label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================
+       Value Stack
+       ============================================ */
+    .value-stack__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .value-stack__grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .value-stack__grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      padding: 2rem;
+    }
+
+    .feature-card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      border-radius: var(--radius-md);
+      margin-bottom: 1.25rem;
+      color: var(--accent-light);
+    }
+
+    .feature-card__icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .feature-card__title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card__desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       Curriculum
+       ============================================ */
+    .curriculum__list {
+      max-width: 780px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .module {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease-out);
+    }
+
+    .module:hover {
+      border-color: var(--border-hover);
+    }
+
+    .module[open] {
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .module summary {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background 0.25s var(--ease-out);
+    }
+
+    .module summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .module summary:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .module__number {
+      font-family: var(--font-display);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      min-width: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .module__title {
+      flex: 1;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .module__chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.3s var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .module[open] .module__chevron {
+      transform: rotate(180deg);
+    }
+
+    .module__body {
+      padding: 0 1.5rem 1.25rem;
+      padding-left: calc(1.5rem + 2rem + 1.25rem);
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       Social Proof
+       ============================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .testimonial {
+      padding: 2rem;
+    }
+
+    .testimonial__quote {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .testimonial__quote::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--accent);
+      position: absolute;
+      top: -1rem;
+      left: -0.25rem;
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .testimonial__author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial__avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .testimonial__name {
+      font-weight: 600;
+      font-size: 0.9375rem;
+    }
+
+    .testimonial__role {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       Application CTA
+       ============================================ */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(124, 58, 237, 0.08) 100%);
+      border-top: 1px solid rgba(59, 130, 246, 0.15);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+      text-align: center;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .cta-step {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+    }
+
+    .cta-step__num {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .cta-step__arrow {
+      color: var(--text-muted);
+      font-size: 1.25rem;
+    }
+
+    .cta-note {
+      margin-top: 1.5rem;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    /* ============================================
+       FAQ
+       ============================================ */
+    .faq-list {
+      max-width: 700px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease-out);
+    }
+
+    .faq-item:hover {
+      border-color: var(--border-hover);
+    }
+
+    .faq-item[open] {
+      border-color: rgba(59, 130, 246, 0.2);
+    }
+
+    .faq-item summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.125rem 1.5rem;
+      cursor: pointer;
+      list-style: none;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      user-select: none;
+      transition: background 0.25s var(--ease-out);
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .faq-item__chevron {
+      width: 18px;
+      height: 18px;
+      color: var(--text-muted);
+      transition: transform 0.3s var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .faq-item[open] .faq-item__chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-item__body {
+      padding: 0 1.5rem 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       Footer
+       ============================================ */
+    .footer {
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .footer__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer__links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer__link {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      transition: color 0.25s var(--ease-out);
+    }
+
+    .footer__link:hover {
+      color: var(--text-primary);
+    }
+
+    .footer__socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer__social {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      color: var(--text-secondary);
+      transition: all 0.3s var(--ease-out);
+    }
+
+    .footer__social:hover {
+      color: var(--accent-light);
+      border-color: rgba(59, 130, 246, 0.3);
+      background: rgba(59, 130, 246, 0.08);
+    }
+
+    .footer__social svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer__copy {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--blue"></div>
+  <div class="bg-glow bg-glow--purple"></div>
+
+  <!-- ============================================
+       Navbar
+       ============================================ -->
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">@unsertheanswer</a>
+
+      <button class="navbar__toggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="navbar__menu">
+        <a href="#value-stack" class="navbar__link">What You Get</a>
+        <a href="#curriculum" class="navbar__link">Curriculum</a>
+        <a href="#apply" class="navbar__link">Apply Now</a>
+        <a href="#apply" class="navbar__cta">Apply Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       Hero Section
+       ============================================ -->
+  <section class="hero section relative z-10">
+    <div class="container">
+      <div class="animate-on-scroll">
+        <span class="hero__label">Limited Enrollment</span>
+      </div>
+
+      <h1 class="display-xl text-gradient hero__headline animate-on-scroll">
+        Build &amp; Scale Your Digital Consulting Agency
+      </h1>
+
+      <p class="hero__sub animate-on-scroll">
+        The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.
+      </p>
+
+      <!-- VSL Video Placeholder -->
+      <div class="vsl-wrapper animate-on-scroll">
+        <div class="vsl-placeholder">
+          <div class="vsl-placeholder__inner">
+            <div class="vsl-play-btn">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="8,5 20,12 8,19"/></svg>
+            </div>
+            <span class="vsl-text">Watch the overview</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll">
+        <button class="btn btn--primary btn--lg" onclick="openTypeform('bH2l5iL8')">
+          Apply Now — Limited Spots
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <!-- Trust Indicators -->
+      <div class="trust-row animate-on-scroll">
+        <div class="trust-item">
+          <span class="trust-item__value">50+</span>
+          <span class="trust-item__label">Students</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__value">8</span>
+          <span class="trust-item__label">Modules</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__value">Live</span>
+          <span class="trust-item__label">Coaching</span>
+        </div>
+        <div class="trust-item">
+          <span class="trust-item__value">1-on-1</span>
+          <span class="trust-item__label">Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Value Stack Section
+       ============================================ -->
+  <section id="value-stack" class="section relative z-10">
+    <div class="container">
+      <div class="text-center">
+        <span class="label animate-on-scroll">What You Get</span>
+        <h2 class="display-lg animate-on-scroll">Everything You Need to Build<br>a Profitable Agency</h2>
+      </div>
+
+      <div class="value-stack__grid stagger-children">
+
+        <!-- Card 1: Discord Community -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="feature-card__title">Discord Community</h3>
+          <p class="feature-card__desc">Private community of agency builders. Get answers, share wins, network.</p>
+        </div>
+
+        <!-- Card 2: Video Course -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+          </div>
+          <h3 class="feature-card__title">Video Course</h3>
+          <p class="feature-card__desc">8 comprehensive modules on Whop. From niche selection to scaling.</p>
+        </div>
+
+        <!-- Card 3: Contract Support -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="feature-card__title">Contract Support</h3>
+          <p class="feature-card__desc">Unser personally helps you bid on contracts and close deals.</p>
+        </div>
+
+        <!-- Card 4: Group Coaching -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="feature-card__title">Group Coaching</h3>
+          <p class="feature-card__desc">Weekly live calls via Zoom. Hot seats, strategy, accountability.</p>
+        </div>
+
+        <!-- Card 5: Live Events -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="feature-card__title">Live Events</h3>
+          <p class="feature-card__desc">Exclusive in-person meetups and workshops with the community.</p>
+        </div>
+
+        <!-- Card 6: 1-on-1 DM Access -->
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="feature-card__title">1-on-1 DM Access</h3>
+          <p class="feature-card__desc">Direct messaging access to Unser. Get personalized guidance.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Curriculum Section
+       ============================================ -->
+  <section id="curriculum" class="section relative z-10">
+    <div class="container">
+      <div class="text-center">
+        <span class="label animate-on-scroll">The Curriculum</span>
+        <h2 class="display-lg animate-on-scroll">8 Modules. Zero Fluff.</h2>
+      </div>
+
+      <div class="curriculum__list stagger-children">
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">01</span>
+            <span class="module__title">Skill &amp; Niche Selection</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Find your profitable niche and define your service offering. You'll identify high-demand skills, evaluate market opportunities, and position yourself to attract premium clients from day one.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">02</span>
+            <span class="module__title">Team Building &amp; Operations</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Build your team with the right structure and revenue share model. Learn how to recruit, onboard, and manage talent so you can scale without burning out.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">03</span>
+            <span class="module__title">Digital Presence</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Website, social profiles, and establishing credibility online. Build a digital footprint that generates inbound leads and positions you as an authority in your niche.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">04</span>
+            <span class="module__title">Paid Advertising</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Meta &amp; Google ad campaigns that actually convert. From campaign setup to creative strategy to optimization — learn to generate qualified leads predictably.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">05</span>
+            <span class="module__title">Personal Brand</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Content strategy, scripting, and building authority. Learn how to create content that attracts your ideal clients and establishes trust before the first conversation.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">06</span>
+            <span class="module__title">Cold Outreach</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            LinkedIn, email sequences, and landing meetings. Get proven outreach templates, follow-up cadences, and personalization strategies that get responses.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">07</span>
+            <span class="module__title">Cold Calling</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Scripts, objection handling, and phone sales mastery. Master the phone with word-for-word scripts, live call breakdowns, and proven frameworks for booking meetings.
+          </div>
+        </details>
+
+        <details class="module animate-on-scroll">
+          <summary>
+            <span class="module__number">08</span>
+            <span class="module__title">In-Person Sales</span>
+            <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="module__body">
+            Door-to-door, events, and field sales playbook. Learn the art of face-to-face selling — from networking events to walking into businesses and closing on the spot.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Social Proof / Results Section
+       ============================================ -->
+  <section class="section relative z-10">
+    <div class="container">
+      <div class="text-center">
+        <span class="label animate-on-scroll">Results</span>
+        <h2 class="display-lg animate-on-scroll">Real People. Real Results.</h2>
+      </div>
+
+      <div class="testimonials-grid stagger-children">
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">I went from doing freelance work for $500/month to running a team of four and closing $10K+ contracts. The frameworks in this course gave me the exact playbook I needed.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">JM</div>
+            <div>
+              <div class="testimonial__name">Jordan M.</div>
+              <div class="testimonial__role">From freelancer to $12K/mo agency</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">The community alone is worth it. Having access to other agency owners and Unser's direct guidance accelerated my growth by at least 6 months. Closed my first client in week two.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">SK</div>
+            <div>
+              <div class="testimonial__name">Sarah K.</div>
+              <div class="testimonial__role">First client in 14 days</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card testimonial animate-on-scroll">
+          <p class="testimonial__quote">I was stuck at $3K/mo for almost a year. After implementing Module 6 and 7, I booked 11 meetings in my first month of outreach. This stuff actually works.</p>
+          <div class="testimonial__author">
+            <div class="testimonial__avatar">RT</div>
+            <div>
+              <div class="testimonial__name">Ray T.</div>
+              <div class="testimonial__role">11 meetings booked in 30 days</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Application CTA Section
+       ============================================ -->
+  <section id="apply" class="section cta-section relative z-10">
+    <div class="container">
+      <h2 class="display-lg animate-on-scroll">Ready to Build Your Agency?</h2>
+      <p class="text-lg text-secondary mt-4 animate-on-scroll" style="max-width:600px;margin-left:auto;margin-right:auto;">
+        Apply now — spots are limited. We only accept serious builders.
+      </p>
+
+      <div class="cta-steps animate-on-scroll">
+        <div class="cta-step">
+          <span class="cta-step__num">1</span>
+          <span>Apply</span>
+        </div>
+        <span class="cta-step__arrow">&rarr;</span>
+        <div class="cta-step">
+          <span class="cta-step__num">2</span>
+          <span>Get Accepted</span>
+        </div>
+        <span class="cta-step__arrow">&rarr;</span>
+        <div class="cta-step">
+          <span class="cta-step__num">3</span>
+          <span>Start Building</span>
+        </div>
+      </div>
+
+      <div class="animate-on-scroll">
+        <button class="btn btn--primary btn--lg" onclick="openTypeform('bH2l5iL8')">
+          Start Your Application
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </div>
+
+      <p class="cta-note animate-on-scroll">Application takes ~2 minutes. We'll review and respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ Section
+       ============================================ -->
+  <section class="section relative z-10">
+    <div class="container">
+      <div class="text-center">
+        <span class="label animate-on-scroll">FAQ</span>
+        <h2 class="display-lg animate-on-scroll">Common Questions</h2>
+      </div>
+
+      <div class="faq-list stagger-children">
+
+        <details class="faq-item animate-on-scroll">
+          <summary>
+            <span>Who is this for?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__body">
+            This is for freelancers, side-hustlers, and aspiring agency owners who want to build a real digital consulting business. Whether you do web design, marketing, SEO, or any digital service — if you want to go from solo to agency, this is for you.
+          </div>
+        </details>
+
+        <details class="faq-item animate-on-scroll">
+          <summary>
+            <span>How much does it cost?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__body">
+            Pricing is shared during the application process. We keep enrollment limited to ensure quality, so pricing reflects the level of access and mentorship included. Apply to learn more about current pricing and payment options.
+          </div>
+        </details>
+
+        <details class="faq-item animate-on-scroll">
+          <summary>
+            <span>How long do I have access?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__body">
+            You get lifetime access to the course content and community. All future module updates and additions are included at no extra cost. The live coaching calls run on an ongoing basis as long as you're an active member.
+          </div>
+        </details>
+
+        <details class="faq-item animate-on-scroll">
+          <summary>
+            <span>What if I'm a complete beginner?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__body">
+            That's exactly who Module 1 is built for. We start from scratch — identifying your skills, picking a niche, and building your first offer. Many of our most successful students started with zero experience in running an agency.
+          </div>
+        </details>
+
+        <details class="faq-item animate-on-scroll">
+          <summary>
+            <span>Can I get a refund?</span>
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="faq-item__body">
+            We offer a 14-day satisfaction guarantee. If you go through the material, attend the calls, and genuinely feel it's not for you, we'll work with you on a refund. We're confident in the value — but we want you to feel confident too.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       Footer
+       ============================================ -->
+  <footer class="footer relative z-10">
+    <div class="container">
+      <div class="footer__brand">@unsertheanswer &times; Prime Solution Media</div>
+
+      <div class="footer__socials">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/unsertheanswer/" class="footer__social" aria-label="Instagram" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Twitter/X -->
+        <a href="https://x.com/unsertheanswer" class="footer__social" aria-label="Twitter" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+        </a>
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/unsertheanswer" class="footer__social" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://www.youtube.com/@unsertheanswer" class="footer__social" aria-label="YouTube" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+        </a>
+      </div>
+
+      <div class="footer__links">
+        <a href="privacy-policy.html" class="footer__link">Privacy Policy</a>
+        <a href="terms.html" class="footer__link">Terms of Service</a>
+        <a href="https://primesolutionmedia.com/contact-us/" class="footer__link" target="_blank" rel="noopener">Contact</a>
+      </div>
+
+      <p class="footer__copy">&copy; 2026 @unsertheanswer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Shared JS -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
