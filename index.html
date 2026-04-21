@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>@unsertheanswer — Premium Digital Consulting & Agency Growth</title>
+  <title>@unsertheanswer — Digital Consulting | Agency Growth</title>
   <meta name="description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Learn to build and scale your consulting agency.">
   <meta name="author" content="@unsertheanswer">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="@unsertheanswer — Digital Consulting | Agency Growth">
-  <meta property="og:description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Follow @unsertheanswer for tips on building and scaling your consulting agency.">
+  <meta property="og:description" content="Digital Consulting, Agency Growth, and Prime Solution Media.">
   <meta property="og:url" content="https://unsertheanswer.com">
   <meta property="og:image" content="assets/og-image.jpeg">
 
@@ -20,1044 +20,345 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Shared Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ============================================
-       PREMIUM LANDING PAGE STYLES
-       ============================================ */
-
-    :root {
-      /* Vivid Deep Blue/Cyan Theme inspired by reference but keeping brand */
-      --bg-deep: #050508;
-      --neon-cyan: #00f2fe;
-      --neon-blue: #4facfe;
-      --neon-purple: #7f00ff;
-      --glass-bg: rgba(15, 15, 20, 0.45);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --glass-border-hover: rgba(255, 255, 255, 0.2);
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg-deep);
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(79, 172, 254, 0.08), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(127, 0, 255, 0.08), transparent 25%);
+      background: #080c14;
       color: #fff;
-    }
-
-    /* ---- Animated Background Orbs ---- */
-    .ambient-orb {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(120px);
-      z-index: 0;
-      opacity: 0.35;
-      pointer-events: none;
-      animation: floatOrb 20s ease-in-out infinite alternate;
-    }
-
-    .ambient-orb--1 {
-      width: 60vw;
-      height: 60vw;
-      max-width: 800px;
-      max-height: 800px;
-      background: radial-gradient(circle, var(--neon-blue), transparent 60%);
-      top: -20vh;
-      left: -20vw;
-      animation-delay: 0s;
-    }
-
-    .ambient-orb--2 {
-      width: 50vw;
-      height: 50vw;
-      max-width: 600px;
-      max-height: 600px;
-      background: radial-gradient(circle, var(--neon-purple), transparent 60%);
-      bottom: -10vh;
-      right: -10vw;
-      animation-delay: -5s;
-    }
-
-    @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(5%, 10%) scale(1.1); }
-      100% { transform: translate(-5%, -5%) scale(0.9); }
-    }
-
-    /* ---- Navigation ---- */
-    .premium-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 1.25rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 100;
-      background: rgba(5, 5, 8, 0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--glass-border);
-    }
-    
-    .nav-brand {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 1.125rem;
-      letter-spacing: -0.02em;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .nav-brand__avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .nav-link {
-      padding: 0.45rem 1rem;
-      border-radius: 50px;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      text-decoration: none;
-      color: rgba(255,255,255,0.75);
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.05);
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .nav-link:hover {
-      color: #fff;
-      border-color: rgba(255,255,255,0.35);
-      background: rgba(255,255,255,0.1);
-    }
-
-    .nav-link--cta {
-      color: #fff;
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-      border-color: transparent;
-      padding: 0.45rem 1.25rem;
-    }
-
-    .nav-link--cta:hover {
-      opacity: 0.88;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(79,172,254,0.35);
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-    }
-
-    @media (max-width: 640px) {
-      .nav-link:not(.nav-link--cta) { display: none; }
-    }
-
-    /* ---- Page Container ---- */
-    .page-wrapper {
-      position: relative;
-      z-index: 10;
-      padding-top: 100px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-inline: 2rem;
-    }
-
-    /* ---- Hero Section ---- */
-    .hero {
-      min-height: 80vh;
-      display: grid;
-      grid-template-columns: 1fr 0.8fr;
-      align-items: center;
-      gap: 4rem;
-      padding: 4rem 0;
-    }
-
-    .hero-content {
-      animation: fadeRight 1s var(--ease-out) forwards;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(79, 172, 254, 0.1);
-      border: 1px solid rgba(79, 172, 254, 0.3);
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--neon-cyan);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 5vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #ffffff 30%, #a1a1aa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-desc {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 2.5rem;
-      max-width: 90%;
-    }
-
-    .hero-optin {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      padding: 2rem;
-      border-radius: var(--radius-xl);
-      backdrop-filter: blur(24px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
-    }
-    
-    .hero-optin h3 {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-      color: #fff;
-    }
-
-    .hero-optin p {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-    }
-
-    .optin-form {
-      display: flex;
-      gap: 0.75rem;
-    }
-
-    .optin-form .input {
-      flex: 1;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #fff;
-      border-radius: var(--radius-md);
-      padding: 1rem 1.25rem;
-      transition: all 0.3s;
-    }
-
-    .optin-form .input:focus {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(79, 172, 254, 0.3);
-    }
-
-    .optin-form .btn {
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
-      border: none;
-      color: #fff;
-      font-weight: 700;
-      padding: 1rem 1.75rem;
-      border-radius: var(--radius-md);
-      letter-spacing: 0.02em;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .optin-form .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(79, 172, 254, 0.4);
-    }
-
-    .hero-visual {
-      position: relative;
-      animation: fadeLeft 1s var(--ease-out) forwards;
-    }
-
-    .hero-avatar {
-      width: 100%;
-      max-width: 450px;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      border-radius: var(--radius-xl);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      border: 1px solid var(--glass-border);
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-visual::after {
-      content: '';
-      position: absolute;
-      inset: -2rem;
-      background: linear-gradient(135deg, rgba(79, 172, 254, 0.2), rgba(127, 0, 255, 0.2));
-      filter: blur(40px);
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    /* ---- Section Headers ---- */
-    .section-header {
-      text-align: left;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* ---- Resources Carousel ---- */
-    @keyframes rc-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .resources-carousel-wrap {
-      margin-bottom: 4rem;
-      overflow: hidden;
-      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-    }
-    .resources-grid {
-      overflow: hidden;
-    }
-    .rc-track {
-      display: flex;
-      gap: 1.5rem;
-      width: max-content;
-      animation: rc-scroll 20s linear infinite;
-    }
-    .rc-track:hover { animation-play-state: paused; }
-
-    .resource-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius-xl);
-      padding: 2.5rem 2rem;
-      backdrop-filter: blur(24px);
-      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      flex: 0 0 340px;
-      width: 340px;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      align-items: center;
+      padding: 3rem 1.25rem 4rem;
     }
-    
-    .resource-card::before {
+
+    /* ---- Background glow ---- */
+    body::before {
       content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: radial-gradient(800px circle at 50% 100%, rgba(79, 172, 254, 0.08), transparent 40%);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-
-    .resource-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--glass-border-hover);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(79, 172, 254, 0.3);
-    }
-    
-    .resource-card:hover::before {
-      opacity: 1;
-    }
-
-    .rc-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(79, 172, 254, 0.15), rgba(79, 172, 254, 0.05));
-      border: 1px solid rgba(79, 172, 254, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--neon-cyan);
-      margin-bottom: 1.5rem;
-      transition: all 0.4s ease;
-    }
-
-    .resource-card:hover .rc-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 0 25px rgba(79, 172, 254, 0.4);
-      background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), rgba(79, 172, 254, 0.1));
-    }
-
-    .rc-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.5;
-    }
-
-    .rc-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.75rem;
-    }
-
-    .rc-desc {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-size: 0.9375rem;
-      margin-bottom: 2rem;
-      flex-grow: 1;
-    }
-
-    .rc-action {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--neon-cyan);
-      font-weight: 600;
-      font-size: 0.9375rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    
-    .rc-action svg {
-      width: 18px; height: 18px;
-      transition: transform 0.3s;
-    }
-    
-    .resource-card:hover .rc-action svg {
-      transform: translateX(5px);
-    }
-
-    /* ---- Trust Video Section ---- */
-    @keyframes tvs-drift1 {
-      0%   { transform: translate(0, 0) scale(1); }
-      33%  { transform: translate(60px, -40px) scale(1.15); }
-      66%  { transform: translate(-30px, 50px) scale(0.9); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes tvs-drift2 {
-      0%   { transform: translate(0, 0) scale(1); }
-      50%  { transform: translate(-80px, 30px) scale(1.2); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes tvs-drift3 {
-      0%   { transform: translate(0, 0) scale(1); }
-      40%  { transform: translate(50px, 60px) scale(0.85); }
-      100% { transform: translate(0, 0) scale(1); }
-    }
-    @keyframes tvs-grid-move {
-      0%   { background-position: 0 0; }
-      100% { background-position: 40px 40px; }
-    }
-    @keyframes tvs-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .trust-video-section {
-      position: relative;
-      overflow: hidden;
-      padding: 5rem 0;
-      border-top: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-    }
-
-    /* Animated background layers */
-    .tvs-bg {
-      position: absolute;
-      inset: 0;
-      background: #05050a;
+      position: fixed;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 65%);
+      pointer-events: none;
       z-index: 0;
     }
-    .tvs-orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.55;
-    }
-    .tvs-orb--1 {
-      width: 520px; height: 520px;
-      background: radial-gradient(circle, rgba(79,172,254,0.45) 0%, transparent 70%);
-      top: -160px; left: -100px;
-      animation: tvs-drift1 14s ease-in-out infinite;
-    }
-    .tvs-orb--2 {
-      width: 440px; height: 440px;
-      background: radial-gradient(circle, rgba(127,0,255,0.4) 0%, transparent 70%);
-      bottom: -120px; right: -80px;
-      animation: tvs-drift2 18s ease-in-out infinite;
-    }
-    .tvs-orb--3 {
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(0,242,254,0.25) 0%, transparent 70%);
-      top: 40%; left: 50%;
-      animation: tvs-drift3 22s ease-in-out infinite;
-    }
-    .tvs-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: tvs-grid-move 4s linear infinite;
+
+    /* ---- Wrapper ---- */
+    .page {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Social proof row */
-    .tvs-proof {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
-    }
-    .tvs-avatars {
-      display: flex;
-    }
-    .tvs-av {
-      width: 36px; height: 36px;
+    /* ---- Avatar ---- */
+    .profile-avatar {
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
-      border: 2px solid #0a0a10;
       object-fit: cover;
-      margin-left: -10px;
-    }
-    .tvs-av--1 { margin-left: 0; }
-    .tvs-rating {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.75);
-    }
-    .tvs-stars { color: #ffd700; letter-spacing: 1px; margin-right: 4px; }
-
-    /* Trust badges row */
-    .tvs-badges {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 14px;
-      padding: 1.25rem 2rem;
-      backdrop-filter: blur(12px);
-      flex-wrap: wrap;
-      gap: 0;
-    }
-    .tvs-badge {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.6rem 1.8rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.85);
-      text-transform: uppercase;
-    }
-    .tvs-badge em {
-      font-style: normal;
-      color: var(--neon-cyan);
-    }
-    .tvs-badge-icon {
-      width: 20px; height: 20px;
-      color: var(--neon-cyan);
-      flex-shrink: 0;
-    }
-    .tvs-divider {
-      width: 1px;
-      height: 36px;
-      background: rgba(255,255,255,0.1);
-      flex-shrink: 0;
-    }
-
-    /* Logo carousel */
-    .tvs-carousel-wrap {
-      margin-top: 3rem;
-    }
-    .tvs-carousel-label {
-      text-align: center;
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      border: 3px solid #3b82f6;
+      box-shadow: 0 0 0 4px rgba(59,130,246,0.2), 0 0 40px rgba(59,130,246,0.25);
       margin-bottom: 1.25rem;
     }
-    .tvs-carousel {
-      overflow: hidden;
-      mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%);
-    }
-    .tvs-track {
-      display: flex;
-      gap: 0;
-      width: max-content;
-      animation: tvs-scroll 18s linear infinite;
-    }
-    .tvs-track:hover { animation-play-state: paused; }
-    .tvs-logo {
-      flex-shrink: 0;
-      min-width: 160px;
-      padding: 0.85rem 2rem;
-      margin: 0 0.5rem;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.03);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      white-space: nowrap;
+
+    /* ---- Handle ---- */
+    .profile-handle {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.875rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 0.5rem;
       text-align: center;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .tvs-logo:hover {
-      color: rgba(255,255,255,0.85);
-      border-color: rgba(79,172,254,0.4);
     }
 
-    @media (max-width: 640px) {
-      .tvs-badges { flex-direction: column; align-items: flex-start; gap: 0.5rem; padding: 1.25rem; }
-      .tvs-divider { display: none; }
-      .tvs-badge { padding: 0.4rem 0; }
-    }
-
-    /* ---- Socials Grid ---- */
-    .socials-section {
-      background: rgba(10, 10, 15, 0.7);
-      border-top: 1px solid var(--glass-border);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 6rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .socials-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(127, 0, 255, 0.05) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .socials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      position: relative;
-      z-index: 10;
-    }
-
-    .social-tile {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--glass-border);
-      padding: 2rem;
-      border-radius: var(--radius-lg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* ---- Tagline ---- */
+    .profile-tagline {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
       text-align: center;
-      text-decoration: none;
-      transition: all 0.4s var(--ease-out);
+      margin-bottom: 1.75rem;
+      line-height: 1.5;
     }
 
-    .social-tile:hover {
-      background: rgba(255,255,255,0.05);
-      transform: translateY(-5px);
-      border-color: rgba(255,255,255,0.15);
+    /* ---- Social Icons ---- */
+    .social-row {
+      display: flex;
+      gap: 0.875rem;
+      margin-bottom: 2.5rem;
     }
 
-    .st-icon {
-      width: 56px;
-      height: 56px;
+    .social-btn {
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      background: rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
-      color: #fff;
-      transition: all 0.4s ease;
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      transition: all 0.25s ease;
     }
-    
-    .social-tile:hover .st-icon {
-      transform: scale(1.15);
-    }
-    
-    /* Social Brand Colors */
-    .social-tile--yt:hover .st-icon { background: #FF0000; box-shadow: 0 0 25px rgba(255,0,0,0.5); border-color: #FF0000; }
-    .social-tile--ig:hover .st-icon { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); box-shadow: 0 0 25px rgba(220,39,67,0.5); border-color: transparent; }
-    .social-tile--tt:hover .st-icon { background: #00f2fe; color: #000; box-shadow: 0 0 25px rgba(0,242,254,0.5); border-color: #00f2fe; }
-    .social-tile--tw:hover .st-icon { background: #9146FF; box-shadow: 0 0 25px rgba(145,70,255,0.5); border-color: #9146FF; }
 
-    .st-icon svg {
-      width: 24px;
-      height: 24px;
+    .social-btn:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .social-btn svg {
+      width: 20px;
+      height: 20px;
       fill: currentColor;
     }
 
-    .st-title {
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.25rem;
+    /* ---- Freebie Card ---- */
+    .freebie-card {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(12px);
     }
 
-    .st-desc {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
+    .card-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #3b82f6;
+      margin-bottom: 0.875rem;
+    }
+
+    .card-label::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.375rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .card-desc {
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ---- Opt-in Form ---- */
+    .optin-form {
+      display: flex;
+      gap: 0.625rem;
+    }
+
+    .optin-form input[type="email"] {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 0.8125rem 1rem;
+      font-size: 0.875rem;
+      color: #fff;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .optin-form input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
+
+    .optin-form input[type="email"]:focus {
+      border-color: rgba(59,130,246,0.5);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    }
+
+    .optin-form button {
+      flex-shrink: 0;
+      background: #3b82f6;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      padding: 0.8125rem 1.25rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+
+    .optin-form button:hover {
+      background: #2563eb;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+    }
+
+    .optin-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* ---- Links below card ---- */
+    .link-list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.25s ease;
+    }
+
+    .link-item:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(59,130,246,0.3);
+      color: #fff;
+    }
+
+    .link-item svg {
+      width: 16px;
+      height: 16px;
+      opacity: 0.5;
+      flex-shrink: 0;
     }
 
     /* ---- Footer ---- */
-    .premium-footer {
-      padding: 4rem 2rem;
+    .page-footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
       text-align: center;
-      color: var(--text-muted);
-      font-size: 0.875rem;
     }
 
-    /* ---- Keyframes ---- */
-    @keyframes fadeRight {
-      from { opacity: 0; transform: translateX(-40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    @keyframes fadeLeft {
-      from { opacity: 0; transform: translateX(40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    /* ---- Responsive ---- */
-    @media (max-width: 968px) {
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 3rem;
-        padding: 2rem 0 4rem;
-      }
-      .hero-desc {
-        max-width: 100%;
-      }
-      .hero-optin {
-        text-align: left;
-      }
-      .hero-visual {
-        grid-row: 1;
-      }
-      .hero-avatar {
-        max-width: 380px;
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .optin-form {
-        flex-direction: column;
-      }
-      .section-title {
-        text-align: center;
-      }
-      .section-header {
-        text-align: center;
-      }
+    @media (max-width: 400px) {
+      .optin-form { flex-direction: column; }
+      .optin-form button { width: 100%; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Light Orbs -->
-  <div class="ambient-orb ambient-orb--1"></div>
-  <div class="ambient-orb ambient-orb--2"></div>
+  <div class="page">
 
-  <!-- Glass Navigation -->
-  <nav class="premium-nav">
-    <div class="nav-brand">
-      <img src="assets/favicon.jpeg" alt="Logo" class="nav-brand__avatar">
-    </div>
-    <div class="nav-links">
-      <a href="course.html" class="nav-link">Masterclass</a>
-      <a href="https://primesolutionmedia.com" class="nav-link" target="_blank" rel="noopener">Prime Solution Media</a>
-      <a href="http://revivecommerce.com/" class="nav-link" target="_blank" rel="noopener">Revive Commerce</a>
-      <a href="https://revivenutra.co" class="nav-link" target="_blank" rel="noopener">Revive Nutra</a>
-      <a href="https://calendly.com/unserjaffry/dax-new-client-meeting" class="nav-link nav-link--cta" target="_blank" rel="noopener">Book a Call</a>
-    </div>
-  </nav>
+    <!-- Avatar -->
+    <img src="assets/favicon.jpeg" alt="@unsertheanswer" class="profile-avatar">
 
-  <!-- Main Content -->
-  <main>
-    <div class="page-wrapper">
-      
-      <!-- Premium Hero Section -->
-      <section class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">Scale Your Digital Consulting Agency.</h1>
-          <p class="hero-desc">I provide the exact blueprints, actionable tutorials, and full-service media support you need to navigate global client acquisition with mastery.</p>
-          
-          <div class="hero-optin">
-            <h3>Get the Free Agency Growth Blueprint</h3>
-            <p>Join 5,000+ agency owners inside.</p>
-            <form class="optin-form" data-email-form data-form-action="#" data-redirect="freebie.html">
-              <input type="email" class="input" placeholder="Enter your email address..." required aria-label="Email address">
-              <button type="submit" class="btn">Instant Access</button>
-            </form>
-          </div>
-        </div>
-        
-        <div class="hero-visual">
-          <img src="assets/avatar.jpeg" alt="@unsertheanswer" class="hero-avatar">
-        </div>
-      </section>
+    <!-- Handle -->
+    <h1 class="profile-handle">@unsertheanswer</h1>
 
-      <!-- Resources Section -->
-      <section class="resources-section">
-        <div class="section-header animate-on-scroll">
-          <h2 class="section-title">Premium Resources</h2>
-        </div>
-        
-        <div class="resources-carousel-wrap">
-          <div class="resources-grid">
-            <div class="rc-track">
+    <!-- Tagline -->
+    <p class="profile-tagline">Digital Consulting &nbsp;|&nbsp; Agency Growth &nbsp;|&nbsp; Prime Solution Media</p>
 
-              <!-- === Original set === -->
-              <a href="course.html" class="resource-card">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
-                <h3 class="rc-title">The Masterclass</h3>
-                <p class="rc-desc">A comprehensive step-by-step curriculum to build, systematize, and wildly scale your digital consulting agency from scratch.</p>
-                <div class="rc-action">Explore Course <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
+    <!-- Social Icons -->
+    <div class="social-row">
 
-              <a href="https://primesolutionmedia.com" class="resource-card" target="_blank" rel="noopener">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                <h3 class="rc-title">Prime Solution Media</h3>
-                <p class="rc-desc">Need it done for you? Partner directly with my full-service digital agency to accelerate your brand's authority and revenue.</p>
-                <div class="rc-action">Work With Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
+      <!-- TikTok -->
+      <a href="https://www.tiktok.com/@unsertheanswer" class="social-btn" target="_blank" rel="noopener" aria-label="TikTok">
+        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V8.99a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.76 1.52V6.85a4.85 4.85 0 0 1-1-.16z"/></svg>
+      </a>
 
-              <a href="http://revivecommerce.com/" class="resource-card" target="_blank" rel="noopener">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></div>
-                <h3 class="rc-title">Revive Commerce</h3>
-                <p class="rc-desc">The ecommerce accelerator built to launch, grow, and scale high-converting online stores with proven systems and hands-on strategy.</p>
-                <div class="rc-action">Explore Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/unsertheanswer/" class="social-btn" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44-.24.61-.52 1.05-.98 1.51-.46.46-.9.74-1.51.98-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.08 4.08 0 0 1-1.51-.98 4.08 4.08 0 0 1-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44.24-.61.52-1.05.98-1.51a4.08 4.08 0 0 1 1.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 0 0-2.09 1.36A5.77 5.77 0 0 0 .69 4.08C.39 4.84.19 5.72.13 6.99.07 8.27.06 8.68.06 11.94s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.36 2.09a5.77 5.77 0 0 0 2.09 1.36c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 0 0 2.09-1.36 5.77 5.77 0 0 0 1.36-2.09c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 0 0-1.36-2.09A5.77 5.77 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 0-2.88 0 1.44 1.44 0 0 0 2.88 0z"/></svg>
+      </a>
 
-              <a href="https://revivenutra.co" class="resource-card" target="_blank" rel="noopener">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12h8M12 8v8"/></svg></div>
-                <h3 class="rc-title">Revive Nutra</h3>
-                <p class="rc-desc">Premium supplement brand engineered for performance and recovery — clean formulas backed by science, built for serious results.</p>
-                <div class="rc-action">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@unsertheanswer" class="social-btn" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.64 31.64 0 0 0 0 12a31.64 31.64 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.84.55 9.38.55 9.38.55s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.64 31.64 0 0 0 24 12a31.64 31.64 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+      </a>
 
-              <a href="https://calendly.com/" class="resource-card" target="_blank" rel="noopener">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-                <h3 class="rc-title">1-on-1 Consulting</h3>
-                <p class="rc-desc">Book a private, high-impact strategy call with me to untangle your bottlenecks and map out a bespoke scaling architecture.</p>
-                <div class="rc-action">Book a Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-              <!-- === Duplicate set for seamless loop === -->
-              <a href="https://whop.com/the-answer-agency-accelerator/agency-accelerator-a6/" class="resource-card" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg></div>
-                <h3 class="rc-title">The Masterclass</h3>
-                <p class="rc-desc">A comprehensive step-by-step curriculum to build, systematize, and wildly scale your digital consulting agency from scratch.</p>
-                <div class="rc-action">Explore Course <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-              <a href="https://primesolutionmedia.com" class="resource-card" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></div>
-                <h3 class="rc-title">Prime Solution Media</h3>
-                <p class="rc-desc">Need it done for you? Partner directly with my full-service digital agency to accelerate your brand's authority and revenue.</p>
-                <div class="rc-action">Work With Us <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-              <a href="http://revivecommerce.com/" class="resource-card" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg></div>
-                <h3 class="rc-title">Revive Commerce</h3>
-                <p class="rc-desc">The ecommerce accelerator built to launch, grow, and scale high-converting online stores with proven systems and hands-on strategy.</p>
-                <div class="rc-action">Explore Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-              <a href="https://revivenutra.co" class="resource-card" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12h8M12 8v8"/></svg></div>
-                <h3 class="rc-title">Revive Nutra</h3>
-                <p class="rc-desc">Premium supplement brand engineered for performance and recovery — clean formulas backed by science, built for serious results.</p>
-                <div class="rc-action">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-              <a href="https://calendly.com/" class="resource-card" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
-                <div class="rc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
-                <h3 class="rc-title">1-on-1 Consulting</h3>
-                <p class="rc-desc">Book a private, high-impact strategy call with me to untangle your bottlenecks and map out a bespoke scaling architecture.</p>
-                <div class="rc-action">Book a Call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-              </a>
-
-            </div><!-- end rc-track -->
-          </div><!-- end resources-grid -->
-        </div><!-- end resources-carousel-wrap -->
-      </section>
+      <!-- Twitch -->
+      <a href="https://twitch.tv/unsertheanswer" class="social-btn" target="_blank" rel="noopener" aria-label="Twitch">
+        <svg viewBox="0 0 24 24"><path d="M11.57 4.71h1.71v5.14h-1.71V4.71zm4.7 0h1.72v5.14h-1.71V4.71zM4.29 0L1.71 4.29v17.14h5.15V24h3.42l3.43-2.57h4.28L23.14 16V0H4.29zm17.14 14.86l-3.43 3.43h-5.14L9.43 21.7v-3.43H5.14V1.71h16.29v13.15z"/></svg>
+      </a>
 
     </div>
 
-    <!-- ============================================
-         Trust Bar + Video BG + Logo Carousel
-         ============================================ -->
-    <section class="trust-video-section">
-      <!-- Animated Video-Style Background -->
-      <div class="tvs-bg" aria-hidden="true">
-        <div class="tvs-orb tvs-orb--1"></div>
-        <div class="tvs-orb tvs-orb--2"></div>
-        <div class="tvs-orb tvs-orb--3"></div>
-        <div class="tvs-grid"></div>
-      </div>
+    <!-- Freebie Opt-in Card -->
+    <div class="freebie-card">
+      <div class="card-label">Free Resource</div>
+      <h2 class="card-title">Agency Growth Blueprint</h2>
+      <p class="card-desc">Get the exact framework I used to scale my consulting agency.</p>
+      <form class="optin-form" data-email-form data-redirect="freebie.html">
+        <input type="email" placeholder="Enter your email" required aria-label="Email address">
+        <button type="submit">Get Free Access</button>
+      </form>
+    </div>
 
-      <div class="page-wrapper" style="position:relative;z-index:2;">
+    <!-- Quick Link List -->
+    <div class="link-list">
 
-        <!-- Social Proof Row -->
-        <div class="tvs-proof animate-on-scroll">
-          <div class="tvs-avatars">
-            <img src="assets/avatar.jpeg" alt="" class="tvs-av tvs-av--1">
-            <img src="assets/avatar.jpeg" alt="" class="tvs-av tvs-av--2">
-            <img src="assets/avatar.jpeg" alt="" class="tvs-av tvs-av--3">
-          </div>
-          <span class="tvs-rating">
-            <span class="tvs-stars">★★★★★</span>
-            <strong>1,200+ clients</strong> &nbsp;·&nbsp; 4.9 / 5 satisfaction
-          </span>
-        </div>
+      <a href="course.html" class="link-item">
+        The Masterclass — Agency Accelerator
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
 
-        <!-- Trust Badges -->
-        <div class="tvs-badges animate-on-scroll">
-          <div class="tvs-badge">
-            <svg class="tvs-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            <span><em>SECURE</em> PURCHASE</span>
-          </div>
-          <div class="tvs-divider"></div>
-          <div class="tvs-badge">
-            <svg class="tvs-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            <span><em>INSTANT</em> ACCESS</span>
-          </div>
-          <div class="tvs-divider"></div>
-          <div class="tvs-badge">
-            <svg class="tvs-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span><em>7-DAY</em> GUARANTEE</span>
-          </div>
-          <div class="tvs-divider"></div>
-          <div class="tvs-badge">
-            <svg class="tvs-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.95"/></svg>
-            <span><em>CONSTANT</em> UPDATES</span>
-          </div>
-        </div>
+      <a href="https://primesolutionmedia.com" class="link-item" target="_blank" rel="noopener">
+        Prime Solution Media
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
 
-        <!-- Logo Carousel -->
-        <div class="tvs-carousel-wrap animate-on-scroll">
-          <p class="tvs-carousel-label">Brands &amp; Clients We've Worked With</p>
-          <div class="tvs-carousel">
-            <div class="tvs-track">
-              <!-- Logos duplicated for infinite scroll -->
-              <div class="tvs-logo">Adobe</div>
-              <div class="tvs-logo">Shopify</div>
-              <div class="tvs-logo">HubSpot</div>
-              <div class="tvs-logo">Salesforce</div>
-              <div class="tvs-logo">Meta Ads</div>
-              <div class="tvs-logo">Google</div>
-              <div class="tvs-logo">Stripe</div>
-              <div class="tvs-logo">Clickfunnels</div>
-              <div class="tvs-logo">GoHighLevel</div>
-              <div class="tvs-logo">Mailchimp</div>
-              <!-- Duplicate set for seamless loop -->
-              <div class="tvs-logo">Adobe</div>
-              <div class="tvs-logo">Shopify</div>
-              <div class="tvs-logo">HubSpot</div>
-              <div class="tvs-logo">Salesforce</div>
-              <div class="tvs-logo">Meta Ads</div>
-              <div class="tvs-logo">Google</div>
-              <div class="tvs-logo">Stripe</div>
-              <div class="tvs-logo">Clickfunnels</div>
-              <div class="tvs-logo">GoHighLevel</div>
-              <div class="tvs-logo">Mailchimp</div>
-            </div>
-          </div>
-        </div>
+      <a href="http://revivecommerce.com/" class="link-item" target="_blank" rel="noopener">
+        Revive Commerce — Ecommerce Accelerator
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
 
-      </div>
-    </section>
+      <a href="https://revivenutra.co" class="link-item" target="_blank" rel="noopener">
+        Revive Nutra — Supplement Brand
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
 
-    <!-- Social Platforms Section (Full Width Background) -->
-    <section class="socials-section">
-      <div class="page-wrapper" style="padding-top: 0;">
-        <div class="section-header animate-on-scroll" style="text-align: center;">
-          <h2 class="section-title">Connect on Social</h2>
-        </div>
+      <a href="https://calendly.com/unserjaffry/dax-new-client-meeting" class="link-item" target="_blank" rel="noopener">
+        Book a 1-on-1 Strategy Call
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
 
-        <div class="socials-grid stagger-children">
-          
-          <!-- YouTube -->
-          <a href="https://www.youtube.com/@unsertheanswer" class="social-tile social-tile--yt animate-on-scroll" target="_blank" rel="noopener">
-            <div class="st-icon">
-              <svg viewBox="0 0 24 24"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.54 3.5 12 3.5 12 3.5s-7.54 0-9.38.55A3.02 3.02 0 0 0 .5 6.19 31.64 31.64 0 0 0 0 12a31.64 31.64 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.84.55 9.38.55 9.38.55s7.54 0 9.38-.55a3.02 3.02 0 0 0 2.12-2.14A31.64 31.64 0 0 0 24 12a31.64 31.64 0 0 0-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
-            </div>
-            <div class="st-title">YouTube</div>
-            <div class="st-desc">Tutorials & Vlogs</div>
-          </a>
+    </div>
 
-          <!-- Instagram -->
-          <a href="https://www.instagram.com/unsertheanswer/" class="social-tile social-tile--ig animate-on-scroll" target="_blank" rel="noopener">
-            <div class="st-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.44.41.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.17.47.36 1.27.41 2.44.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.41 2.44-.24.61-.52 1.05-.98 1.51-.46.46-.9.74-1.51.98-.47.17-1.27.36-2.44.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.44-.41a4.08 4.08 0 0 1-1.51-.98 4.08 4.08 0 0 1-.98-1.51c-.17-.47-.36-1.27-.41-2.44C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.41-2.44.24-.61.52-1.05.98-1.51a4.08 4.08 0 0 1 1.51-.98c.47-.17 1.27-.36 2.44-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.77 5.77 0 0 0-2.09 1.36A5.77 5.77 0 0 0 .69 4.08C.39 4.84.19 5.72.13 6.99.07 8.27.06 8.68.06 11.94s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.36 2.09a5.77 5.77 0 0 0 2.09 1.36c.76.3 1.64.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.77 5.77 0 0 0 2.09-1.36 5.77 5.77 0 0 0 1.36-2.09c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.77 5.77 0 0 0-1.36-2.09A5.77 5.77 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 0-2.88 0 1.44 1.44 0 0 0 2.88 0z"/></svg>
-            </div>
-            <div class="st-title">Instagram</div>
-            <div class="st-desc">Behind the scenes</div>
-          </a>
+  </div>
 
-          <!-- TikTok -->
-          <a href="https://www.tiktok.com/@unsertheanswer" class="social-tile social-tile--tt animate-on-scroll" target="_blank" rel="noopener">
-            <div class="st-icon">
-              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.73a8.19 8.19 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.16z"/></svg>
-            </div>
-            <div class="st-title">TikTok</div>
-            <div class="st-desc">Daily Tips</div>
-          </a>
-
-          <!-- Twitch -->
-          <a href="https://twitch.tv/unsertheanswer" class="social-tile social-tile--tw animate-on-scroll" target="_blank" rel="noopener">
-            <div class="st-icon">
-              <svg viewBox="0 0 24 24"><path d="M11.57 4.71h1.71v5.14h-1.71V4.71zm4.7 0h1.72v5.14h-1.71V4.71zM4.29 0L1.71 4.29v17.14h5.15V24h3.42l3.43-2.57h4.28L23.14 16V0H4.29zm17.14 14.86l-3.43 3.43h-5.14L9.43 21.7v-3.43H5.14V1.71h16.29v13.15z"/></svg>
-            </div>
-            <div class="st-title">Twitch</div>
-            <div class="st-desc">Live Streams</div>
-          </a>
-          
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="premium-footer">
-    <p>&copy; 2026 Prime Solution Media. Built by PSM.</p>
+  <footer class="page-footer">
+    &copy; 2026 @unsertheanswer &mdash; Prime Solution Media
   </footer>
 
-  <!-- Shared JS -->
   <script src="js/main.js"></script>
 </body>
 </html>
