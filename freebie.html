@@ -84,13 +84,11 @@
       animation: cardEntrance 0.8s var(--ease-out) both, borderGlow 4s ease-in-out infinite 0.8s;
     }
 
-    .freebie-branding {
-      font-family: var(--font-display);
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: var(--accent-light);
-      text-transform: none;
+    .freebie-branding img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
       margin-bottom: 1.5rem;
     }
 
@@ -222,39 +220,20 @@
 
   <main class="freebie-page">
 
-    <div class="freebie-card">
+    <div class="freebie-card" id="download-card">
 
       <img src="assets/og-image.jpeg" alt="Agency Growth Blueprint" class="freebie-hero-img">
 
-      <div class="freebie-branding">@unsertheanswer</div>
+      <div class="freebie-branding"><img src="assets/favicon.jpeg" alt="Logo"></div>
 
-      <h1 class="freebie-headline">Get the Free Agency Growth Blueprint</h1>
+      <h1 class="freebie-headline">Your Blueprint is Ready!</h1>
 
-      <p class="freebie-subheadline">The exact framework used to build and scale a digital consulting agency from zero. Delivered straight to your inbox.</p>
+      <p class="freebie-subheadline" style="margin-bottom: 2rem;">Click the button below to download your Agency Growth Blueprint.</p>
 
-      <ul class="freebie-bullets">
-        <li>Step-by-step niche selection framework</li>
-        <li>Client acquisition playbook</li>
-        <li>Revenue projection calculator</li>
-        <li>Agency operations checklist</li>
-      </ul>
-
-      <form class="freebie-form" data-email-form data-form-action="#" data-redirect="thankyou.html">
-        <input
-          type="email"
-          class="input"
-          placeholder="Enter your email address"
-          required
-          autocomplete="email"
-          aria-label="Email address"
-        >
-        <button type="submit" class="btn btn--primary">Send Me the Blueprint</button>
-      </form>
-
-      <p class="freebie-trust">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>
-        No spam. Unsubscribe anytime.
-      </p>
+      <a href="assets/agency-growth-blueprint.pdf" download class="btn btn--primary" style="display: flex; justify-content: center; align-items: center; gap: 0.625rem; width: 100%; padding: 1.125rem; margin-bottom: 1.5rem; text-decoration: none; font-size: 1.0625rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download PDF Now
+      </a>
 
     </div>
 

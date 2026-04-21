@@ -65,12 +65,12 @@
       padding: 0 clamp(1.25rem, 4vw, 2.5rem);
     }
 
-    .navbar__logo {
-      font-family: var(--font-display);
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      white-space: nowrap;
+    .navbar__logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      object-fit: cover;
+      display: block;
     }
 
     .navbar__menu {
@@ -176,7 +176,7 @@
        Hero
        ============================================ */
     .hero {
-      padding-top: clamp(7rem, 14vw, 10rem);
+      padding-top: 1rem;
       padding-bottom: var(--section-padding);
       text-align: center;
     }
@@ -406,46 +406,56 @@
     /* ============================================
        Social Proof
        ============================================ */
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+    /* Testimonials carousel */
+    @keyframes testi-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .testimonials-carousel {
+      overflow: hidden;
       margin-top: 3rem;
+      mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
 
-    @media (max-width: 900px) {
-      .testimonials-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .testimonials-grid {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;
+      animation: testi-scroll 30s linear infinite;
     }
 
-    @media (max-width: 560px) {
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    .testimonials-grid:hover { animation-play-state: paused; }
 
     .testimonial {
-      padding: 2rem;
+      flex: 0 0 320px;
+      width: 320px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .testimonial__quote {
-      font-size: 1rem;
+      font-size: 0.9375rem;
       color: var(--text-secondary);
       line-height: 1.7;
+      flex-grow: 1;
       margin-bottom: 1.5rem;
       position: relative;
+      padding-top: 1.25rem;
     }
 
     .testimonial__quote::before {
       content: '\201C';
       font-family: var(--font-display);
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: var(--accent);
       position: absolute;
-      top: -1rem;
-      left: -0.25rem;
-      opacity: 0.3;
+      top: -0.5rem;
+      left: 0;
+      opacity: 0.35;
       line-height: 1;
     }
 
@@ -453,6 +463,7 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      margin-top: auto;
     }
 
     .testimonial__avatar {
@@ -469,14 +480,30 @@
       flex-shrink: 0;
     }
 
+    .testimonial__info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
     .testimonial__name {
       font-weight: 600;
       font-size: 0.9375rem;
+      line-height: 1.2;
     }
 
     .testimonial__role {
-      font-size: 0.8125rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .testimonial__stars {
+      color: #f59e0b;
+      letter-spacing: 1px;
+      font-size: 0.8rem;
     }
 
     /* ============================================
@@ -737,7 +764,7 @@
        ============================================ -->
   <nav class="navbar">
     <div class="navbar__inner">
-      <a href="/" class="navbar__logo">@unsertheanswer</a>
+      <a href="/" class="navbar__logo"><img src="assets/favicon.jpeg" alt="Logo"></a>
 
       <button class="navbar__toggle" aria-label="Menu">
         <span></span>
@@ -774,13 +801,15 @@
       <!-- VSL Video -->
       <div class="vsl-wrapper animate-on-scroll">
         <div class="vsl-container">
-          <iframe
-            src="https://www.youtube.com/embed/cqvDox9l2HU"
-            title="Build & Scale Your Digital Consulting Agency — @unsertheanswer"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <video
+            src="Images/Unser J – Pitch Deck & Startup Consultant.mp4"
+            controls
+            autoplay
+            preload="auto"
+            poster="https://img.youtube.com/vi/cqvDox9l2HU/maxresdefault.jpg"
+            style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;">
+            Your browser does not support the video tag.
+          </video>
         </div>
       </div>
 
@@ -1019,119 +1048,53 @@
         <h2 class="display-lg animate-on-scroll">What Clients Are Saying</h2>
       </div>
 
-      <div class="testimonials-grid stagger-children">
+      <div class="testimonials-carousel">
+        <div class="testimonials-grid">
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">RC</div>
-            <div>
-              <div class="testimonial__name">Roberto Coello</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <!-- Original set -->
+          <div class="card testimonial"><p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p><div class="testimonial__author"><div class="testimonial__avatar">RC</div><div class="testimonial__info"><div class="testimonial__name">Roberto Coello</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">AJ</div>
-            <div>
-              <div class="testimonial__name">Angela Jones</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">AJ</div><div class="testimonial__info"><div class="testimonial__name">Angela Jones</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">JC</div>
-            <div>
-              <div class="testimonial__name">Jean-Yves Cadeus</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">JC</div><div class="testimonial__info"><div class="testimonial__name">Jean-Yves Cadeus</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">AM</div>
-            <div>
-              <div class="testimonial__name">Aidan McDowell</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p><div class="testimonial__author"><div class="testimonial__avatar">AM</div><div class="testimonial__info"><div class="testimonial__name">Aidan McDowell</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">MN</div>
-            <div>
-              <div class="testimonial__name">Mariah Nua</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p><div class="testimonial__author"><div class="testimonial__avatar">MN</div><div class="testimonial__info"><div class="testimonial__name">Mariah Nua</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">JR</div>
-            <div>
-              <div class="testimonial__name">Joanne Renwick</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p><div class="testimonial__author"><div class="testimonial__avatar">JR</div><div class="testimonial__info"><div class="testimonial__name">Joanne Renwick</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">EK</div>
-            <div>
-              <div class="testimonial__name">Eric Karnezis</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">EK</div><div class="testimonial__info"><div class="testimonial__name">Eric Karnezis</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">GP</div>
-            <div>
-              <div class="testimonial__name">Girish Prabhu</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p><div class="testimonial__author"><div class="testimonial__avatar">GP</div><div class="testimonial__info"><div class="testimonial__name">Girish Prabhu</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">AI</div>
-            <div>
-              <div class="testimonial__name">Ashley Ingle</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p><div class="testimonial__author"><div class="testimonial__avatar">AI</div><div class="testimonial__info"><div class="testimonial__name">Ashley Ingle</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-        <div class="card testimonial animate-on-scroll">
-          <p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p>
-          <div class="testimonial__author">
-            <div class="testimonial__avatar">HK</div>
-            <div>
-              <div class="testimonial__name">Harris Robin Kalash</div>
-              <div class="testimonial__role">⭐⭐⭐⭐⭐ Verified Client</div>
-            </div>
-          </div>
-        </div>
+          <div class="card testimonial"><p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p><div class="testimonial__author"><div class="testimonial__avatar">HK</div><div class="testimonial__info"><div class="testimonial__name">Harris Robin Kalash</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
 
-      </div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p><div class="testimonial__author"><div class="testimonial__avatar">RC</div><div class="testimonial__info"><div class="testimonial__name">Roberto Coello</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">AJ</div><div class="testimonial__info"><div class="testimonial__name">Angela Jones</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">JC</div><div class="testimonial__info"><div class="testimonial__name">Jean-Yves Cadeus</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p><div class="testimonial__author"><div class="testimonial__avatar">AM</div><div class="testimonial__info"><div class="testimonial__name">Aidan McDowell</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p><div class="testimonial__author"><div class="testimonial__avatar">MN</div><div class="testimonial__info"><div class="testimonial__name">Mariah Nua</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p><div class="testimonial__author"><div class="testimonial__avatar">JR</div><div class="testimonial__info"><div class="testimonial__name">Joanne Renwick</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">EK</div><div class="testimonial__info"><div class="testimonial__name">Eric Karnezis</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p><div class="testimonial__author"><div class="testimonial__avatar">GP</div><div class="testimonial__info"><div class="testimonial__name">Girish Prabhu</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p><div class="testimonial__author"><div class="testimonial__avatar">AI</div><div class="testimonial__info"><div class="testimonial__name">Ashley Ingle</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p><div class="testimonial__author"><div class="testimonial__avatar">HK</div><div class="testimonial__info"><div class="testimonial__name">Harris Robin Kalash</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+
+        </div><!-- end testimonials-grid -->
+      </div><!-- end testimonials-carousel -->
     </div>
   </section>
 
