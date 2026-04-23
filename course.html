@@ -6,755 +6,393 @@
   <title>Build & Scale Your Digital Consulting Agency — @unsertheanswer</title>
   <meta name="description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
   <meta name="author" content="@unsertheanswer">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Build & Scale Your Digital Consulting Agency — @unsertheanswer">
   <meta property="og:description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
-  <meta property="og:image" content="assets/og-course.jpg">
+  <meta property="og:image" content="assets/og-course.png">
   <meta property="og:url" content="https://unsertheanswer.com/course">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Build & Scale Your Digital Consulting Agency — @unsertheanswer">
-  <meta name="twitter:description" content="The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.">
-  <meta name="twitter:image" content="assets/og-course.jpg">
 
-  <!-- Fonts -->
+  <link rel="icon" type="image/jpeg" href="assets/favicon.jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- Shared Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Page-Specific Styles -->
   <style>
+    /* Override section padding globally — tighter */
+    :root {
+      --section-padding: clamp(3rem, 5vw, 5rem);
+    }
+
     /* ============================================
        Navbar
        ============================================ */
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      padding: 1rem 0;
-      transition: all 0.35s var(--ease-out);
-      background: transparent;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 1rem 0; transition: all 0.35s var(--ease-out);
     }
-
     .navbar--scrolled {
-      background: rgba(10, 10, 15, 0.92);
-      backdrop-filter: blur(16px);
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border-color); padding: 0.75rem 0;
     }
-
-    .navbar--hidden {
-      transform: translateY(-100%);
-    }
-
+    .navbar--hidden { transform: translateY(-100%); }
     .navbar__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: var(--container-max); margin: 0 auto;
+      padding: 0 clamp(1.25rem,4vw,2.5rem);
     }
-
-    .navbar__logo img {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .navbar__menu {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
-
-    .navbar__link {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-      transition: color 0.25s var(--ease-out);
-    }
-
-    .navbar__link:hover {
-      color: var(--text-primary);
-    }
-
+    .navbar__logo img { width: 34px; height: 34px; border-radius: 8px; object-fit: cover; }
+    .navbar__menu { display: flex; align-items: center; gap: 1.75rem; }
+    .navbar__link { font-size: 0.875rem; font-weight: 500; color: var(--text-secondary); transition: color 0.25s var(--ease-out); }
+    .navbar__link:hover { color: var(--text-primary); }
     .navbar__cta {
-      padding: 0.625rem 1.5rem;
-      font-size: 0.8125rem;
-      font-weight: 600;
-      background: var(--accent);
-      color: #fff;
-      border-radius: var(--radius-full);
+      padding: 0.5625rem 1.375rem; font-size: 0.8125rem; font-weight: 600;
+      background: var(--accent); color: #fff; border-radius: var(--radius-full);
       transition: all 0.3s var(--ease-out);
     }
-
-    .navbar__cta:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 0 20px var(--accent-glow);
-      transform: translateY(-1px);
-    }
-
-    .navbar__toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-      cursor: pointer;
-    }
-
-    .navbar__toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text-primary);
-      border-radius: 2px;
-      transition: all 0.3s var(--ease-out);
-    }
-
-    .navbar__toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .navbar__toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .navbar__toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
-    }
-
+    .navbar__cta:hover { background: var(--accent-hover); box-shadow: 0 0 20px var(--accent-glow); transform: translateY(-1px); }
+    .navbar__toggle { display: none; flex-direction: column; gap: 5px; padding: 4px; cursor: pointer; }
+    .navbar__toggle span { display: block; width: 22px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: all 0.3s var(--ease-out); }
+    .navbar__toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+    .navbar__toggle.active span:nth-child(2) { opacity: 0; }
+    .navbar__toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
     @media (max-width: 768px) {
-      .navbar__toggle {
-        display: flex;
-      }
-
+      .navbar__toggle { display: flex; }
       .navbar__menu {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2.5rem;
-        background: rgba(10, 10, 15, 0.97);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.35s var(--ease-out);
+        position: fixed; inset: 0; flex-direction: column; justify-content: center; gap: 2.5rem;
+        background: rgba(10,10,15,0.97); backdrop-filter: blur(24px);
+        opacity: 0; visibility: hidden; transition: all 0.35s var(--ease-out);
       }
-
-      .navbar__menu--open {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .navbar__menu .navbar__link {
-        font-size: 1.25rem;
-      }
-
-      .navbar__menu .navbar__cta {
-        font-size: 1rem;
-        padding: 0.875rem 2rem;
-      }
+      .navbar__menu--open { opacity: 1; visibility: visible; }
+      .navbar__menu .navbar__link { font-size: 1.25rem; }
+      .navbar__menu .navbar__cta { font-size: 1rem; padding: 0.875rem 2rem; }
     }
 
     /* ============================================
        Hero
        ============================================ */
     .hero {
-      padding-top: 1rem;
+      padding-top: 5.5rem;
       padding-bottom: var(--section-padding);
       text-align: center;
     }
-
     .hero__label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.5rem 1rem;
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
       border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-light);
-      margin-bottom: 1.5rem;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--accent-light); margin-bottom: 1.5rem;
       animation: pulse-glow 3s ease-in-out infinite;
     }
-
-    .hero__headline {
-      max-width: 800px;
-      margin: 0 auto 1.5rem;
-    }
-
+    .hero__headline { max-width: 820px; margin: 0 auto 1.25rem; }
     .hero__sub {
-      max-width: 600px;
-      margin: 0 auto 2.5rem;
-      font-size: clamp(1rem, 1.5vw, 1.125rem);
-      color: var(--text-secondary);
-      line-height: 1.7;
+      max-width: 580px; margin: 0 auto 2.25rem;
+      font-size: clamp(1rem,1.5vw,1.125rem);
+      color: var(--text-secondary); line-height: 1.7;
     }
 
-    /* VSL Video */
-    .vsl-wrapper {
-      max-width: 780px;
-      margin: 0 auto 2.5rem;
-    }
-
+    /* VSL */
+    .vsl-wrapper { max-width: 760px; margin: 0 auto 2.25rem; }
     .vsl-container {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 */
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      position: relative; width: 100%; padding-top: 56.25%;
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 0 0 1px rgba(59,130,246,0.15);
       background: #000;
     }
-
-    .vsl-container iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
+    .vsl-container iframe, .vsl-container video {
+      position: absolute; inset: 0; width: 100%; height: 100%; border: none;
     }
 
-    /* Trust Indicators */
+    /* Trust bar */
     .trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      margin-top: 2.5rem;
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.5rem 2.5rem; margin-top: 2.5rem;
     }
+    .trust-item { display: flex; flex-direction: column; align-items: center; gap: 0.2rem; }
+    .trust-item__value { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; }
+    .trust-item__label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .trust-divider { width: 1px; height: 40px; background: var(--border-color); align-self: center; }
+    @media (max-width: 480px) { .trust-divider { display: none; } }
 
-    .trust-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
+    /* ============================================
+       Problem Section
+       ============================================ */
+    .problem-section { background: rgba(255,255,255,0.018); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .problem-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
     }
-
-    .trust-item__value {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
+    @media (max-width: 768px) { .problem-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .problem-text {}
+    .problem-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .problem-list li {
+      display: flex; align-items: flex-start; gap: 0.875rem;
+      font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6;
     }
+    .problem-x {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 1px;
+      border-radius: 50%; background: rgba(239,68,68,0.1); border: 1.5px solid rgba(239,68,68,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; color: #ef4444; font-weight: 700;
+    }
+    .problem-visual {
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-xl);
+      padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem;
+    }
+    .pv-card {
+      background: var(--bg-elevated); border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+    .pv-card-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .pv-card-val { font-family: var(--font-display); font-size: 1.875rem; font-weight: 700; color: var(--accent-light); }
+    .pv-card-sub { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem; }
+    .pv-cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
 
-    .trust-item__label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    /* ============================================
+       Solution intro
+       ============================================ */
+    .solution-intro { text-align: center; }
+    .course-preview-img {
+      width: 100%; max-width: 680px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(59,130,246,0.15);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(59,130,246,0.08);
+      margin: 2.5rem auto 0;
+      display: block;
+      object-fit: cover;
     }
 
     /* ============================================
        Value Stack
        ============================================ */
     .value-stack__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1.25rem; margin-top: 2.5rem;
     }
-
-    @media (min-width: 1024px) {
-      .value-stack__grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .value-stack__grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .feature-card {
-      padding: 2rem;
-    }
-
+    @media (min-width: 1024px) { .value-stack__grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 640px) { .value-stack__grid { grid-template-columns: 1fr; } }
+    .feature-card { padding: 1.75rem; }
     .feature-card__icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.15);
-      border-radius: var(--radius-md);
-      margin-bottom: 1.25rem;
-      color: var(--accent-light);
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.15);
+      border-radius: var(--radius-md); margin-bottom: 1.125rem; color: var(--accent-light);
     }
+    .feature-card__icon svg { width: 22px; height: 22px; }
+    .feature-card__title { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .feature-card__desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
 
-    .feature-card__icon svg {
-      width: 24px;
-      height: 24px;
+    /* ============================================
+       Who It's For
+       ============================================ */
+    .who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    @media (max-width: 768px) { .who-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .who-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .who-list li {
+      display: flex; align-items: flex-start; gap: 0.875rem;
+      font-size: 0.9375rem; line-height: 1.6;
     }
-
-    .feature-card__title {
-      font-family: var(--font-display);
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+    .who-check {
+      width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px;
+      border-radius: 50%; background: rgba(59,130,246,0.12); border: 1.5px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .feature-card__desc {
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    .who-check svg { width: 12px; height: 12px; stroke: var(--accent-light); }
+    .who-image-wrap {
+      border-radius: var(--radius-xl); overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
+    .who-image-wrap img { width: 100%; height: 400px; object-fit: cover; object-position: top; display: block; }
 
     /* ============================================
        Curriculum
        ============================================ */
     .curriculum__list {
-      max-width: 780px;
-      margin: 3rem auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
+      max-width: 760px; margin: 2.5rem auto 0;
+      display: flex; flex-direction: column; gap: 0.625rem;
     }
-
     .module {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); overflow: hidden;
       transition: border-color 0.3s var(--ease-out);
     }
-
-    .module:hover {
-      border-color: var(--border-hover);
-    }
-
-    .module[open] {
-      border-color: rgba(59, 130, 246, 0.2);
-    }
-
+    .module:hover { border-color: var(--border-hover); }
+    .module[open] { border-color: rgba(59,130,246,0.2); }
     .module summary {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      padding: 1.25rem 1.5rem;
-      cursor: pointer;
-      list-style: none;
-      user-select: none;
-      transition: background 0.25s var(--ease-out);
+      display: flex; align-items: center; gap: 1.25rem;
+      padding: 1.125rem 1.5rem; cursor: pointer; list-style: none;
+      user-select: none; transition: background 0.25s var(--ease-out);
     }
-
-    .module summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .module summary:hover {
-      background: var(--bg-card-hover);
-    }
-
-    .module__number {
-      font-family: var(--font-display);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      color: var(--accent-light);
-      min-width: 2rem;
-      letter-spacing: 0.02em;
-    }
-
-    .module__title {
-      flex: 1;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .module__chevron {
-      width: 20px;
-      height: 20px;
-      color: var(--text-muted);
-      transition: transform 0.3s var(--ease-out);
-      flex-shrink: 0;
-    }
-
-    .module[open] .module__chevron {
-      transform: rotate(180deg);
-    }
-
-    .module__body {
-      padding: 0 1.5rem 1.25rem;
-      padding-left: calc(1.5rem + 2rem + 1.25rem);
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-      line-height: 1.7;
-    }
+    .module summary::-webkit-details-marker { display: none; }
+    .module summary:hover { background: var(--bg-card-hover); }
+    .module__number { font-family: var(--font-display); font-size: 0.8rem; font-weight: 700; color: var(--accent-light); min-width: 2rem; letter-spacing: 0.02em; }
+    .module__title { flex: 1; font-weight: 600; font-size: 0.9375rem; }
+    .module__chevron { width: 18px; height: 18px; color: var(--text-muted); transition: transform 0.3s var(--ease-out); flex-shrink: 0; }
+    .module[open] .module__chevron { transform: rotate(180deg); }
+    .module__body { padding: 0 1.5rem 1.25rem; padding-left: calc(1.5rem + 2rem + 1.25rem); color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
 
     /* ============================================
-       Social Proof
+       Testimonials
        ============================================ */
-    /* Testimonials carousel */
     @keyframes testi-scroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
     .testimonials-carousel {
-      overflow: hidden;
-      margin-top: 3rem;
+      overflow: hidden; margin-top: 2.5rem;
       mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
     }
-
     .testimonials-grid {
-      display: flex;
-      gap: 1.25rem;
+      display: flex; gap: 1.25rem;
       width: max-content;
-      animation: testi-scroll 30s linear infinite;
+      animation: testi-scroll 28s linear infinite;
     }
-
     .testimonials-grid:hover { animation-play-state: paused; }
-
     .testimonial {
-      flex: 0 0 320px;
-      width: 320px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      flex: 0 0 300px; width: 300px; padding: 1.5rem;
+      display: flex; flex-direction: column;
     }
-
+    .testimonial__stars { color: #3b82f6; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 1rem; }
     .testimonial__quote {
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      flex-grow: 1;
-      margin-bottom: 1.5rem;
-      position: relative;
-      padding-top: 1.25rem;
+      font-size: 0.9rem; color: var(--text-secondary);
+      line-height: 1.7; flex-grow: 1; margin-bottom: 1.25rem;
     }
-
-    .testimonial__quote::before {
-      content: '\201C';
-      font-family: var(--font-display);
-      font-size: 2.5rem;
-      color: var(--accent);
-      position: absolute;
-      top: -0.5rem;
-      left: 0;
-      opacity: 0.35;
-      line-height: 1;
-    }
-
-    .testimonial__author {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: auto;
-    }
-
+    .testimonial__author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
     .testimonial__avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), #7c3aed);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: #fff;
-      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.8125rem; color: #fff; flex-shrink: 0;
     }
-
-    .testimonial__info {
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .testimonial__name {
-      font-weight: 600;
-      font-size: 0.9375rem;
-      line-height: 1.2;
-    }
-
-    .testimonial__role {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-    }
-
-    .testimonial__stars {
-      color: #f59e0b;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
-    }
-
-    /* ============================================
-       Application CTA
-       ============================================ */
-    .cta-section {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.12) 0%, rgba(124, 58, 237, 0.08) 100%);
-      border-top: 1px solid rgba(59, 130, 246, 0.15);
-      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
-      text-align: center;
-    }
-
-    .cta-steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .cta-step {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-    }
-
-    .cta-step__num {
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--accent);
-      color: #fff;
-      border-radius: 50%;
-      font-size: 0.75rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .cta-step__arrow {
-      color: var(--text-muted);
-      font-size: 1.25rem;
-    }
-
-    .cta-note {
-      margin-top: 1.5rem;
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-
-    /* ============================================
-       FAQ
-       ============================================ */
-    .faq-list {
-      max-width: 700px;
-      margin: 3rem auto 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .faq-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color 0.3s var(--ease-out);
-    }
-
-    .faq-item:hover {
-      border-color: var(--border-hover);
-    }
-
-    .faq-item[open] {
-      border-color: rgba(59, 130, 246, 0.2);
-    }
-
-    .faq-item summary {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.125rem 1.5rem;
-      cursor: pointer;
-      list-style: none;
-      font-weight: 600;
-      font-size: 0.9375rem;
-      user-select: none;
-      transition: background 0.25s var(--ease-out);
-    }
-
-    .faq-item summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .faq-item summary:hover {
-      background: var(--bg-card-hover);
-    }
-
-    .faq-item__chevron {
-      width: 18px;
-      height: 18px;
-      color: var(--text-muted);
-      transition: transform 0.3s var(--ease-out);
-      flex-shrink: 0;
-    }
-
-    .faq-item[open] .faq-item__chevron {
-      transform: rotate(180deg);
-    }
-
-    .faq-item__body {
-      padding: 0 1.5rem 1.25rem;
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-      line-height: 1.7;
-    }
+    .testimonial__name { font-weight: 600; font-size: 0.9rem; line-height: 1.2; }
+    .testimonial__role { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.125rem; }
 
     /* ============================================
        Instructor
        ============================================ */
-    .instructor-card {
-      display: flex;
-      align-items: center;
-      gap: 3rem;
-      max-width: 820px;
-      margin: 3rem auto 0;
-      background: var(--bg-card);
+    .instructor-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; align-items: center;
+      max-width: 900px; margin: 2.5rem auto 0;
+    }
+    @media (max-width: 768px) { .instructor-wrap { grid-template-columns: 1fr; gap: 2rem; } }
+    .instructor-img-wrap {
+      border-radius: var(--radius-xl); overflow: hidden;
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-xl);
-      padding: clamp(2rem, 4vw, 3rem);
+      box-shadow: 0 0 60px rgba(59,130,246,0.15), 0 20px 40px rgba(0,0,0,0.4);
     }
+    .instructor-img-wrap img { width: 100%; height: 440px; object-fit: cover; object-position: top; display: block; }
+    .instructor-creds { display: flex; flex-direction: column; gap: 0.625rem; margin: 1.25rem 0; }
+    .instructor-cred {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.9rem; color: var(--text-secondary);
+    }
+    .instructor-cred::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+    .instructor-name { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0.25rem; }
+    .instructor-handle { font-size: 0.875rem; color: var(--accent-light); font-weight: 500; margin-bottom: 1rem; }
+    .instructor-bio { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; }
 
-    .instructor-photo {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 30px var(--accent-glow);
-      flex-shrink: 0;
+    /* ============================================
+       CTA Section
+       ============================================ */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(124,58,237,0.07) 100%);
+      border-top: 1px solid rgba(59,130,246,0.15); border-bottom: 1px solid rgba(59,130,246,0.15);
+      text-align: center;
     }
+    .cta-steps {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0.875rem; margin: 1.75rem 0; flex-wrap: wrap;
+    }
+    .cta-step { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9375rem; color: var(--text-secondary); }
+    .cta-step__num {
+      width: 28px; height: 28px; display: flex; align-items: center; justify-content: center;
+      background: var(--accent); color: #fff; border-radius: 50%;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    }
+    .cta-step__arrow { color: var(--text-muted); }
+    .cta-note { margin-top: 1.25rem; font-size: 0.8rem; color: var(--text-muted); }
 
-    .instructor-name {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.25rem;
+    /* Guarantee badge */
+    .guarantee-badge {
+      display: inline-flex; align-items: center; gap: 0.75rem;
+      margin-top: 1.5rem; padding: 0.875rem 1.5rem;
+      background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: var(--radius-full); font-size: 0.85rem; color: rgba(255,255,255,0.7);
     }
+    .guarantee-badge svg { width: 18px; height: 18px; color: #22c55e; flex-shrink: 0; }
 
-    .instructor-handle {
-      font-size: 0.875rem;
-      color: var(--accent-light);
-      margin-bottom: 1rem;
-      font-weight: 500;
+    /* ============================================
+       FAQ
+       ============================================ */
+    .faq-list { max-width: 680px; margin: 2.5rem auto 0; display: flex; flex-direction: column; gap: 0.625rem; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); overflow: hidden;
+      transition: border-color 0.3s var(--ease-out);
     }
-
-    .instructor-bio {
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      line-height: 1.7;
+    .faq-item:hover { border-color: var(--border-hover); }
+    .faq-item[open] { border-color: rgba(59,130,246,0.2); }
+    .faq-item summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.125rem 1.5rem; cursor: pointer; list-style: none;
+      font-weight: 600; font-size: 0.9375rem; user-select: none;
+      transition: background 0.25s var(--ease-out);
     }
-
-    @media (max-width: 640px) {
-      .instructor-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { background: var(--bg-card-hover); }
+    .faq-item__chevron { width: 17px; height: 17px; color: var(--text-muted); transition: transform 0.3s var(--ease-out); flex-shrink: 0; }
+    .faq-item[open] .faq-item__chevron { transform: rotate(180deg); }
+    .faq-item__body { padding: 0 1.5rem 1.25rem; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
 
     /* ============================================
        Footer
        ============================================ */
-    .footer {
-      border-top: 1px solid var(--border-color);
-      padding: 3rem 0;
-      text-align: center;
-    }
-
-    .footer__brand {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.9375rem;
-      color: var(--text-primary);
-      margin-bottom: 1.25rem;
-    }
-
-    .footer__links {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .footer__link {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      transition: color 0.25s var(--ease-out);
-    }
-
-    .footer__link:hover {
-      color: var(--text-primary);
-    }
-
-    .footer__socials {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
+    .footer { border-top: 1px solid var(--border-color); padding: 2.5rem 0; text-align: center; }
+    .footer__brand { font-family: var(--font-display); font-weight: 700; font-size: 0.9375rem; margin-bottom: 1.25rem; }
+    .footer__socials { display: flex; justify-content: center; gap: 0.875rem; margin-bottom: 1.5rem; }
     .footer__social {
-      width: 36px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 50%;
-      color: var(--text-secondary);
-      transition: all 0.3s var(--ease-out);
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 50%;
+      color: var(--text-secondary); transition: all 0.3s var(--ease-out);
     }
+    .footer__social:hover { color: var(--accent-light); border-color: rgba(59,130,246,0.3); background: rgba(59,130,246,0.08); }
+    .footer__social svg { width: 15px; height: 15px; }
+    .footer__links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .footer__link { font-size: 0.8rem; color: var(--text-muted); transition: color 0.25s var(--ease-out); }
+    .footer__link:hover { color: var(--text-primary); }
+    .footer__copy { font-size: 0.75rem; color: var(--text-muted); }
 
-    .footer__social:hover {
-      color: var(--accent-light);
-      border-color: rgba(59, 130, 246, 0.3);
-      background: rgba(59, 130, 246, 0.08);
+    /* ============================================
+       Sticky bottom bar (mobile)
+       ============================================ */
+    .sticky-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(10,10,15,0.95); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(59,130,246,0.2);
+      padding: 0.875rem 1.5rem;
+      display: none;
     }
-
-    .footer__social svg {
-      width: 16px;
-      height: 16px;
-    }
-
-    .footer__copy {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    @media (max-width: 768px) { .sticky-cta { display: flex; gap: 0.75rem; align-items: center; } }
+    .sticky-cta-text { flex: 1; }
+    .sticky-cta-title { font-size: 0.875rem; font-weight: 700; }
+    .sticky-cta-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .sticky-cta-btn {
+      flex-shrink: 0; padding: 0.625rem 1.25rem;
+      background: var(--accent); color: #fff;
+      font-size: 0.875rem; font-weight: 700;
+      border: none; border-radius: var(--radius-full); cursor: pointer;
+      text-decoration: none; white-space: nowrap;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Effects -->
   <div class="bg-grid"></div>
   <div class="bg-glow bg-glow--blue"></div>
   <div class="bg-glow bg-glow--purple"></div>
@@ -765,87 +403,144 @@
   <nav class="navbar">
     <div class="navbar__inner">
       <a href="/" class="navbar__logo"><img src="assets/favicon.jpeg" alt="Logo"></a>
-
       <button class="navbar__toggle" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-
       <div class="navbar__menu">
-        <a href="#value-stack" class="navbar__link">What You Get</a>
+        <a href="#what-you-get" class="navbar__link">What You Get</a>
         <a href="#curriculum" class="navbar__link">Curriculum</a>
-        <a href="#apply" class="navbar__link">Apply Now</a>
-        <a href="#apply" class="navbar__cta">Apply Now</a>
+        <a href="#instructor" class="navbar__link">About Unser</a>
+        <a href="apply.html" class="navbar__cta">Apply Now</a>
       </div>
     </div>
   </nav>
 
   <!-- ============================================
-       Hero Section
+       HERO
        ============================================ -->
   <section class="hero section relative z-10">
     <div class="container">
-      <div class="animate-on-scroll">
-        <span class="hero__label">Limited Enrollment</span>
-      </div>
-
       <h1 class="display-xl text-gradient hero__headline animate-on-scroll">
         Build &amp; Scale Your Digital Consulting Agency
       </h1>
 
       <p class="hero__sub animate-on-scroll">
-        The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of builders.
+        The complete system for going from freelancer to agency owner — with direct mentorship, proven frameworks, and a community of serious builders.
       </p>
 
-      <!-- VSL Video -->
+      <!-- VSL -->
       <div class="vsl-wrapper animate-on-scroll">
         <div class="vsl-container">
-          <video
-            src="Images/Unser J – Pitch Deck & Startup Consultant.mp4"
-            controls
-            autoplay
-            preload="auto"
-            poster="https://img.youtube.com/vi/cqvDox9l2HU/maxresdefault.jpg"
-            style="position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;">
-            Your browser does not support the video tag.
-          </video>
+          <iframe
+            src="https://www.youtube.com/embed/cqvDox9l2HU?rel=0&modestbranding=1"
+            title="Agency Accelerator — Unser Jaffry"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
         </div>
       </div>
 
-      <div class="animate-on-scroll">
-        <button class="btn btn--primary btn--lg" onclick="openTypeform('bH2l5iL8')">
+      <div class="animate-on-scroll" style="margin-bottom: 1.5rem;">
+        <a href="apply.html" class="btn btn--primary btn--lg">
           Apply Now — Limited Spots
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        </a>
       </div>
 
-      <!-- Trust Indicators -->
+      <!-- Trust bar -->
       <div class="trust-row animate-on-scroll">
         <div class="trust-item">
           <span class="trust-item__value">40+</span>
           <span class="trust-item__label">Students</span>
         </div>
+        <div class="trust-divider"></div>
         <div class="trust-item">
           <span class="trust-item__value">8</span>
           <span class="trust-item__label">Modules</span>
         </div>
+        <div class="trust-divider"></div>
         <div class="trust-item">
           <span class="trust-item__value">Live</span>
           <span class="trust-item__label">Coaching</span>
         </div>
+        <div class="trust-divider"></div>
         <div class="trust-item">
           <span class="trust-item__value">1-on-1</span>
-          <span class="trust-item__label">Access</span>
+          <span class="trust-item__label">DM Access</span>
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-item">
+          <span class="trust-item__value">14-Day</span>
+          <span class="trust-item__label">Guarantee</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       Value Stack Section
+       PROBLEM
        ============================================ -->
-  <section id="value-stack" class="section relative z-10">
+  <section class="section problem-section relative z-10">
+    <div class="container">
+      <div class="problem-grid">
+        <div class="problem-text animate-on-scroll">
+          <h2 class="display-lg">Most Freelancers Stay Stuck at the Same Ceiling</h2>
+          <ul class="problem-list">
+            <li><span class="problem-x">✕</span>Trading time for money with no system to scale</li>
+            <li><span class="problem-x">✕</span>Chasing clients instead of attracting them</li>
+            <li><span class="problem-x">✕</span>No team, no leverage — just you doing everything</li>
+            <li><span class="problem-x">✕</span>No idea how to price, position, or close premium deals</li>
+            <li><span class="problem-x">✕</span>Consuming content but never getting consistent results</li>
+          </ul>
+        </div>
+        <div class="animate-on-scroll">
+          <div class="problem-visual">
+            <div class="pv-card">
+              <div class="pv-card-label">Typical Freelancer</div>
+              <div class="pv-card-val" style="color: rgba(239,68,68,0.9);">$0–2K/mo</div>
+              <div class="pv-card-sub">Inconsistent income, no system</div>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-size:0.8rem;color:var(--text-muted);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+              After the Accelerator
+            </div>
+            <div class="pv-cards-row">
+              <div class="pv-card">
+                <div class="pv-card-label">Month 1–3</div>
+                <div class="pv-card-val">First Client</div>
+                <div class="pv-card-sub">Systems in place</div>
+              </div>
+              <div class="pv-card">
+                <div class="pv-card-label">Month 3–6</div>
+                <div class="pv-card-val">$5–10K+</div>
+                <div class="pv-card-sub">Predictable revenue</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       SOLUTION / COURSE INTRO
+       ============================================ -->
+  <section class="section solution-intro relative z-10">
+    <div class="container">
+      <div class="text-center animate-on-scroll">
+        <h2 class="display-lg">Introducing the Agency Accelerator</h2>
+        <p class="text-lg text-secondary mt-4" style="max-width:600px;margin-left:auto;margin-right:auto;">
+          A complete mentorship program that takes you from wherever you are today to running a scalable, profitable digital consulting agency — with proven frameworks, live coaching, and real accountability.
+        </p>
+      </div>
+      <img src="Images/unser3.png" alt="Agency Accelerator Course Preview" class="course-preview-img animate-on-scroll">
+    </div>
+  </section>
+
+  <!-- ============================================
+       VALUE STACK
+       ============================================ -->
+  <section id="what-you-get" class="section relative z-10">
     <div class="container">
       <div class="text-center">
         <span class="label animate-on-scroll">What You Get</span>
@@ -854,58 +549,52 @@
 
       <div class="value-stack__grid stagger-children">
 
-        <!-- Card 1: Discord Community -->
-        <div class="card card--accent feature-card animate-on-scroll">
-          <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </div>
-          <h3 class="feature-card__title">Discord Community</h3>
-          <p class="feature-card__desc">Private community of agency builders. Get answers, share wins, network.</p>
-        </div>
-
-        <!-- Card 2: Video Course -->
         <div class="card card--accent feature-card animate-on-scroll">
           <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
           </div>
-          <h3 class="feature-card__title">Video Course</h3>
-          <p class="feature-card__desc">8 comprehensive modules on Whop. From niche selection to scaling.</p>
+          <h3 class="feature-card__title">8-Module Video Course</h3>
+          <p class="feature-card__desc">Comprehensive video training on Whop covering every stage of building and scaling your agency — from niche to team to clients.</p>
         </div>
 
-        <!-- Card 3: Contract Support -->
-        <div class="card card--accent feature-card animate-on-scroll">
-          <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-          <h3 class="feature-card__title">Contract Support</h3>
-          <p class="feature-card__desc">Unser personally helps you bid on contracts and close deals.</p>
-        </div>
-
-        <!-- Card 4: Group Coaching -->
         <div class="card card--accent feature-card animate-on-scroll">
           <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <h3 class="feature-card__title">Group Coaching</h3>
-          <p class="feature-card__desc">Weekly live calls via Zoom. Hot seats, strategy, accountability.</p>
+          <h3 class="feature-card__title">Weekly Group Coaching</h3>
+          <p class="feature-card__desc">Live Zoom calls every week — hot seats, strategy sessions, and direct feedback on your business from Unser.</p>
         </div>
 
-        <!-- Card 5: Live Events -->
-        <div class="card card--accent feature-card animate-on-scroll">
-          <div class="feature-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </div>
-          <h3 class="feature-card__title">Live Events</h3>
-          <p class="feature-card__desc">Exclusive in-person meetups and workshops with the community.</p>
-        </div>
-
-        <!-- Card 6: 1-on-1 DM Access -->
         <div class="card card--accent feature-card animate-on-scroll">
           <div class="feature-card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
           <h3 class="feature-card__title">1-on-1 DM Access</h3>
-          <p class="feature-card__desc">Direct messaging access to Unser. Get personalized guidance.</p>
+          <p class="feature-card__desc">Direct messaging access to Unser. Ask questions, get feedback on proposals, and get unstuck in real time.</p>
+        </div>
+
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="feature-card__title">Private Discord</h3>
+          <p class="feature-card__desc">A community of builders doing the work. Post wins, get feedback, find accountability partners, and access the inner circle.</p>
+        </div>
+
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+          </div>
+          <h3 class="feature-card__title">Contract &amp; Deal Support</h3>
+          <p class="feature-card__desc">Unser personally reviews your proposals and helps you bid and close contracts — real deals, not theory.</p>
+        </div>
+
+        <div class="card card--accent feature-card animate-on-scroll">
+          <div class="feature-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3 class="feature-card__title">Live Events &amp; Meetups</h3>
+          <p class="feature-card__desc">Exclusive in-person workshops and networking events. Build real relationships with builders operating at your level.</p>
         </div>
 
       </div>
@@ -913,13 +602,59 @@
   </section>
 
   <!-- ============================================
-       Curriculum Section
+       WHO IT'S FOR
+       ============================================ -->
+  <section class="section relative z-10">
+    <div class="container">
+      <div class="who-grid">
+        <div class="animate-on-scroll">
+          <span class="label">Who It's For</span>
+          <h2 class="display-lg">Built for Serious Builders Ready to Make the Jump</h2>
+          <ul class="who-list">
+            <li>
+              <span class="who-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Freelancers who want to go from solo to agency
+            </li>
+            <li>
+              <span class="who-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Side-hustlers ready to turn their skills into a business
+            </li>
+            <li>
+              <span class="who-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Complete beginners willing to put in the work
+            </li>
+            <li>
+              <span class="who-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Small agency owners who want to systematize and scale
+            </li>
+            <li>
+              <span class="who-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+              Anyone serious about digital consulting as a career
+            </li>
+          </ul>
+          <div style="margin-top:2rem;">
+            <a href="apply.html" class="btn btn--primary">
+              Apply Now
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="who-image-wrap animate-on-scroll">
+          <img src="Images/unser 4.png" alt="Unser Jaffry — Agency Accelerator">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CURRICULUM
        ============================================ -->
   <section id="curriculum" class="section relative z-10">
     <div class="container">
       <div class="text-center">
         <span class="label animate-on-scroll">The Curriculum</span>
         <h2 class="display-lg animate-on-scroll">8 Modules. Zero Fluff.</h2>
+        <p class="text-secondary animate-on-scroll" style="max-width:520px;margin:0.75rem auto 0;font-size:0.9375rem;">Every module is built from real experience running and scaling a 6-figure agency — not theory.</p>
       </div>
 
       <div class="curriculum__list stagger-children">
@@ -930,9 +665,7 @@
             <span class="module__title">Skill &amp; Niche Selection</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Find your profitable niche and define your service offering. You'll identify high-demand skills, evaluate market opportunities, and position yourself to attract premium clients from day one.
-          </div>
+          <div class="module__body">Find your profitable niche and define your service offering. Identify high-demand skills, evaluate market opportunities, and position yourself to attract premium clients from day one.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -941,9 +674,7 @@
             <span class="module__title">Team Building &amp; Operations</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Build your team with the right structure and revenue share model. Learn how to recruit, onboard, and manage talent so you can scale without burning out.
-          </div>
+          <div class="module__body">Build your team with the right structure and revenue share model. Learn how to recruit, onboard, and manage talent so you can scale without burning out.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -952,9 +683,7 @@
             <span class="module__title">Digital Presence</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Website, social profiles, and establishing credibility online. Build a digital footprint that generates inbound leads and positions you as an authority in your niche.
-          </div>
+          <div class="module__body">Website, social profiles, and credibility online. Build a digital footprint that generates inbound leads and positions you as an authority in your niche.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -963,9 +692,7 @@
             <span class="module__title">Paid Advertising</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Meta &amp; Google ad campaigns that actually convert. From campaign setup to creative strategy to optimization — learn to generate qualified leads predictably.
-          </div>
+          <div class="module__body">Meta &amp; Google ad campaigns that actually convert. From campaign setup to creative strategy to optimization — learn to generate qualified leads predictably.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -974,9 +701,7 @@
             <span class="module__title">Personal Brand</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Content strategy, scripting, and building authority. Learn how to create content that attracts your ideal clients and establishes trust before the first conversation.
-          </div>
+          <div class="module__body">Content strategy, scripting, and building authority. Learn to create content that attracts ideal clients and establishes trust before the first conversation.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -985,9 +710,7 @@
             <span class="module__title">Cold Outreach</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            LinkedIn, email sequences, and landing meetings. Get proven outreach templates, follow-up cadences, and personalization strategies that get responses.
-          </div>
+          <div class="module__body">LinkedIn, email sequences, and landing meetings. Proven outreach templates, follow-up cadences, and personalization strategies that get responses.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -996,9 +719,7 @@
             <span class="module__title">Cold Calling</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Scripts, objection handling, and phone sales mastery. Master the phone with word-for-word scripts, live call breakdowns, and proven frameworks for booking meetings.
-          </div>
+          <div class="module__body">Scripts, objection handling, and phone sales mastery. Word-for-word scripts, live call breakdowns, and proven frameworks for booking meetings.</div>
         </details>
 
         <details class="module animate-on-scroll">
@@ -1007,9 +728,7 @@
             <span class="module__title">In-Person Sales</span>
             <svg class="module__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </summary>
-          <div class="module__body">
-            Door-to-door, events, and field sales playbook. Learn the art of face-to-face selling — from networking events to walking into businesses and closing on the spot.
-          </div>
+          <div class="module__body">Door-to-door, events, and field sales playbook. Face-to-face selling — from networking events to walking into businesses and closing on the spot.</div>
         </details>
 
       </div>
@@ -1017,29 +736,7 @@
   </section>
 
   <!-- ============================================
-       Instructor Section
-       ============================================ -->
-  <section class="section relative z-10">
-    <div class="container">
-      <div class="text-center">
-        <span class="label animate-on-scroll">Your Instructor</span>
-        <h2 class="display-lg animate-on-scroll">Built by Someone Who's Done It</h2>
-      </div>
-      <div class="instructor-card animate-on-scroll">
-        <img src="assets/avatar.jpeg" alt="Unser Jaffry" class="instructor-photo">
-        <div>
-          <h3 class="instructor-name">Unser Jaffry</h3>
-          <p class="instructor-handle">@unsertheanswer</p>
-          <p class="instructor-bio">
-            Unser is the founder of Prime Solution Media — a full-service digital consulting agency. He's built client acquisition systems, led remote teams, and helped dozens of freelancers make the jump to running their own agencies. Everything in this course comes from real experience, not theory. His clients span pitch decks, paid ads, branding, and beyond — and he brings that same hands-on approach to every student he works with.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
-       Social Proof / Results Section
+       TESTIMONIALS
        ============================================ -->
   <section class="section relative z-10">
     <div class="container">
@@ -1051,93 +748,193 @@
       <div class="testimonials-carousel">
         <div class="testimonials-grid">
 
-          <!-- Original set -->
-          <div class="card testimonial"><p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p><div class="testimonial__author"><div class="testimonial__avatar">RC</div><div class="testimonial__info"><div class="testimonial__name">Roberto Coello</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <!-- Set 1 -->
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level work. He is very professional, timely, and reliable. Highly recommended.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">AJ</div>
+              <div><div class="testimonial__name">Angela J.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">AJ</div><div class="testimonial__info"><div class="testimonial__name">Angela Jones</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding. He understood exactly what investors needed to see.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">GP</div>
+              <div><div class="testimonial__name">Girish P.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">JC</div><div class="testimonial__info"><div class="testimonial__name">Jean-Yves Cadeus</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional results and excellent communication throughout.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">JC</div>
+              <div><div class="testimonial__name">Jean-Yves C.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p><div class="testimonial__author"><div class="testimonial__avatar">AM</div><div class="testimonial__info"><div class="testimonial__name">Aidan McDowell</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work. Would absolutely work with Unser again.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">AM</div>
+              <div><div class="testimonial__name">Aidan M.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p><div class="testimonial__author"><div class="testimonial__avatar">MN</div><div class="testimonial__info"><div class="testimonial__name">Mariah Nua</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. I've recommended him to multiple people in my network.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">EK</div>
+              <div><div class="testimonial__name">Eric K.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p><div class="testimonial__author"><div class="testimonial__avatar">JR</div><div class="testimonial__info"><div class="testimonial__name">Joanne Renwick</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication — never had to chase for updates.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">JR</div>
+              <div><div class="testimonial__name">Joanne R.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">EK</div><div class="testimonial__info"><div class="testimonial__name">Eric Karnezis</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level work. He is very professional, timely, and reliable. Highly recommended.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">AJ</div>
+              <div><div class="testimonial__name">Angela J.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p><div class="testimonial__author"><div class="testimonial__avatar">GP</div><div class="testimonial__info"><div class="testimonial__name">Girish Prabhu</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding. He understood exactly what investors needed to see.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">GP</div>
+              <div><div class="testimonial__name">Girish P.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p><div class="testimonial__author"><div class="testimonial__avatar">AI</div><div class="testimonial__info"><div class="testimonial__name">Ashley Ingle</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional results and excellent communication throughout.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">JC</div>
+              <div><div class="testimonial__name">Jean-Yves C.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial"><p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p><div class="testimonial__author"><div class="testimonial__avatar">HK</div><div class="testimonial__info"><div class="testimonial__name">Harris Robin Kalash</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work. Would absolutely work with Unser again.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">AM</div>
+              <div><div class="testimonial__name">Aidan M.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <!-- Duplicate set for seamless loop -->
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Completed the project to the end. Thanks Unser!!</p><div class="testimonial__author"><div class="testimonial__avatar">RC</div><div class="testimonial__info"><div class="testimonial__name">Roberto Coello</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. I've recommended him to multiple people in my network.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">EK</div>
+              <div><div class="testimonial__name">Eric K.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser clearly has the knowledge and skills to produce quality, top-level slideshows. He is very professional, timely, and reliable. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">AJ</div><div class="testimonial__info"><div class="testimonial__name">Angela Jones</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
+          <div class="card testimonial" aria-hidden="true">
+            <div class="testimonial__stars">★★★★★</div>
+            <p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication — never had to chase for updates.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">JR</div>
+              <div><div class="testimonial__name">Joanne R.</div><div class="testimonial__role">Verified Client</div></div>
+            </div>
+          </div>
 
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser delivered high-quality work with great attention to detail. Clean, professional design and excellent communication. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">JC</div><div class="testimonial__info"><div class="testimonial__name">Jean-Yves Cadeus</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Great communicator, delivered as promised, and did excellent work.</p><div class="testimonial__author"><div class="testimonial__avatar">AM</div><div class="testimonial__info"><div class="testimonial__name">Aidan McDowell</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser helped me build a beautiful, simple, branded slide deck and communicated clearly throughout the project.</p><div class="testimonial__author"><div class="testimonial__avatar">MN</div><div class="testimonial__info"><div class="testimonial__name">Mariah Nua</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Worked quickly and exactly to the brief. Very professional with great communication.</p><div class="testimonial__author"><div class="testimonial__avatar">JR</div><div class="testimonial__info"><div class="testimonial__name">Joanne Renwick</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Unser's professional and easy to work with. His work is exceptional. Highly recommended.</p><div class="testimonial__author"><div class="testimonial__avatar">EK</div><div class="testimonial__info"><div class="testimonial__name">Eric Karnezis</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Fantastic work on the VC pitch deck. The clarity, flow, and design were outstanding.</p><div class="testimonial__author"><div class="testimonial__avatar">GP</div><div class="testimonial__info"><div class="testimonial__name">Girish Prabhu</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Followed instructions, asked the right questions, and delivered great work.</p><div class="testimonial__author"><div class="testimonial__avatar">AI</div><div class="testimonial__info"><div class="testimonial__name">Ashley Ingle</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-          <div class="card testimonial" aria-hidden="true"><p class="testimonial__quote">Delivered a beautifully designed deck with copy in Figma. Very happy with the result.</p><div class="testimonial__author"><div class="testimonial__avatar">HK</div><div class="testimonial__info"><div class="testimonial__name">Harris Robin Kalash</div><div class="testimonial__role"><span class="testimonial__stars">★★★★★</span> Verified Client</div></div></div></div>
-
-        </div><!-- end testimonials-grid -->
-      </div><!-- end testimonials-carousel -->
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============================================
-       Application CTA Section
+       INSTRUCTOR
+       ============================================ -->
+  <section id="instructor" class="section relative z-10">
+    <div class="container">
+      <div class="text-center">
+        <span class="label animate-on-scroll">Your Instructor</span>
+        <h2 class="display-lg animate-on-scroll">Built by Someone Who's Done It</h2>
+      </div>
+      <div class="instructor-wrap">
+        <div class="instructor-img-wrap animate-on-scroll">
+          <img src="Images/Unser in suit.jpeg" alt="Unser Jaffry">
+        </div>
+        <div class="animate-on-scroll">
+          <h3 class="instructor-name">Unser Jaffry</h3>
+          <p class="instructor-handle">@unsertheanswer</p>
+          <p class="instructor-bio">
+            Unser is the founder of Prime Solution Media — a full-service digital consulting agency working with start-ups and enterprise clients. He's built client acquisition systems from scratch, led distributed remote teams, and helped dozens of freelancers make the jump to running their own agencies.
+          </p>
+          <div class="instructor-creds">
+            <div class="instructor-cred">Founder — Prime Solution Media (Full-Service Agency)</div>
+            <div class="instructor-cred">Founder — Revive Commerce (Ecommerce Accelerator)</div>
+            <div class="instructor-cred">Founder — Revive Nutra (Consumer Brand)</div>
+            <div class="instructor-cred">40+ students mentored across multiple cohorts</div>
+          </div>
+          <a href="apply.html" class="btn btn--primary">
+            Apply to Work With Me
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       APPLICATION CTA
        ============================================ -->
   <section id="apply" class="section cta-section relative z-10">
     <div class="container">
       <h2 class="display-lg animate-on-scroll">Ready to Build Your Agency?</h2>
-      <p class="text-lg text-secondary mt-4 animate-on-scroll" style="max-width:600px;margin-left:auto;margin-right:auto;">
-        Apply now — spots are limited. We only accept serious builders.
+      <p class="text-lg text-secondary mt-4 animate-on-scroll" style="max-width:560px;margin-left:auto;margin-right:auto;">
+        Apply now — spots are limited. We only accept serious builders committed to doing the work.
       </p>
 
       <div class="cta-steps animate-on-scroll">
-        <div class="cta-step">
-          <span class="cta-step__num">1</span>
-          <span>Apply</span>
-        </div>
-        <span class="cta-step__arrow">&rarr;</span>
-        <div class="cta-step">
-          <span class="cta-step__num">2</span>
-          <span>Get Accepted</span>
-        </div>
-        <span class="cta-step__arrow">&rarr;</span>
-        <div class="cta-step">
-          <span class="cta-step__num">3</span>
-          <span>Start Building</span>
-        </div>
+        <div class="cta-step"><span class="cta-step__num">1</span><span>Apply (2 min)</span></div>
+        <span class="cta-step__arrow">→</span>
+        <div class="cta-step"><span class="cta-step__num">2</span><span>Get Accepted</span></div>
+        <span class="cta-step__arrow">→</span>
+        <div class="cta-step"><span class="cta-step__num">3</span><span>Start Building</span></div>
       </div>
 
       <div class="animate-on-scroll">
-        <button class="btn btn--primary btn--lg" onclick="openTypeform('bH2l5iL8')">
+        <a href="apply.html" class="btn btn--primary btn--lg">
           Start Your Application
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        </a>
       </div>
 
-      <p class="cta-note animate-on-scroll">Application takes ~2 minutes. We'll review and respond within 24 hours.</p>
+      <div class="animate-on-scroll" style="display:flex;justify-content:center;">
+        <div class="guarantee-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          14-day satisfaction guarantee — go through the material and if it's not for you, we'll make it right.
+        </div>
+      </div>
+
+      <p class="cta-note animate-on-scroll">Application takes ~2 minutes. We review and respond within 24 hours.</p>
     </div>
   </section>
 
   <!-- ============================================
-       FAQ Section
+       FAQ
        ============================================ -->
   <section class="section relative z-10">
     <div class="container">
@@ -1149,53 +946,28 @@
       <div class="faq-list stagger-children">
 
         <details class="faq-item animate-on-scroll">
-          <summary>
-            <span>Who is this for?</span>
-            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-item__body">
-            This is for freelancers, side-hustlers, and aspiring agency owners who want to build a real digital consulting business. Whether you do web design, marketing, SEO, or any digital service — if you want to go from solo to agency, this is for you.
-          </div>
+          <summary>Who is this for?<svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-item__body">Freelancers, side-hustlers, and aspiring agency owners who want to build a real digital consulting business. Web design, marketing, SEO, video, ads — if you do any digital service and want to go from solo to agency, this is for you.</div>
         </details>
 
         <details class="faq-item animate-on-scroll">
-          <summary>
-            <span>How much does it cost?</span>
-            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-item__body">
-            Pricing is shared during the application process. We keep enrollment limited to ensure quality, so pricing reflects the level of access and mentorship included. Apply to learn more about current pricing and payment options.
-          </div>
+          <summary>How much does it cost?<svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-item__body">Pricing is shared during the application process. We keep enrollment limited so pricing reflects the level of access and mentorship you receive. Apply to see current pricing and payment options.</div>
         </details>
 
         <details class="faq-item animate-on-scroll">
-          <summary>
-            <span>How long do I have access?</span>
-            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-item__body">
-            You get lifetime access to the course content and community. All future module updates and additions are included at no extra cost. The live coaching calls run on an ongoing basis as long as you're an active member.
-          </div>
+          <summary>How long do I have access?<svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-item__body">Lifetime access to the course content and all future updates at no extra cost. Live coaching runs ongoing while you're an active member.</div>
         </details>
 
         <details class="faq-item animate-on-scroll">
-          <summary>
-            <span>What if I'm a complete beginner?</span>
-            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-item__body">
-            That's exactly who Module 1 is built for. We start from scratch — identifying your skills, picking a niche, and building your first offer. Many of our most successful students started with zero experience in running an agency.
-          </div>
+          <summary>What if I'm a complete beginner?<svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-item__body">Module 1 is built exactly for that. We start from scratch — picking your niche, building your first offer, and landing your first client. Many students started with zero agency experience.</div>
         </details>
 
         <details class="faq-item animate-on-scroll">
-          <summary>
-            <span>Can I get a refund?</span>
-            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </summary>
-          <div class="faq-item__body">
-            We offer a 14-day satisfaction guarantee. If you go through the material, attend the calls, and genuinely feel it's not for you, we'll work with you on a refund. We're confident in the value — but we want you to feel confident too.
-          </div>
+          <summary>Can I get a refund?<svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></summary>
+          <div class="faq-item__body">Yes — 14-day satisfaction guarantee. Go through the material, attend the calls, and if you genuinely feel it's not for you, we'll work with you on a refund. We're confident in the value.</div>
         </details>
 
       </div>
@@ -1208,38 +980,45 @@
   <footer class="footer relative z-10">
     <div class="container">
       <div class="footer__brand">@unsertheanswer &times; Prime Solution Media</div>
-
       <div class="footer__socials">
-        <!-- Instagram -->
         <a href="https://www.instagram.com/unsertheanswer/" class="footer__social" aria-label="Instagram" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
-        <!-- Twitter/X -->
         <a href="https://x.com/unsertheanswer" class="footer__social" aria-label="Twitter" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"/><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m2.46-2.46l6.772-6.772"/></svg>
         </a>
-        <!-- LinkedIn -->
         <a href="https://www.linkedin.com/in/unsertheanswer" class="footer__social" aria-label="LinkedIn" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <!-- YouTube -->
         <a href="https://www.youtube.com/@unsertheanswer" class="footer__social" aria-label="YouTube" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
         </a>
       </div>
-
       <div class="footer__links">
         <a href="privacy-policy.html" class="footer__link">Privacy Policy</a>
         <a href="terms.html" class="footer__link">Terms of Service</a>
         <a href="https://primesolutionmedia.com/contact-us/" class="footer__link" target="_blank" rel="noopener">Contact</a>
       </div>
-
       <p class="footer__copy">&copy; 2026 @unsertheanswer. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Shared JS -->
-  <script src="js/main.js"></script>
+  <!-- Mobile sticky CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-text">
+      <div class="sticky-cta-title">Agency Accelerator</div>
+      <div class="sticky-cta-sub">Limited spots — apply in 2 minutes</div>
+    </div>
+    <a href="apply.html" class="sticky-cta-btn">Apply Now</a>
+  </div>
 
+  <script src="js/main.js"></script>
+  <script>
+    /* Show sticky CTA after scrolling past hero */
+    const stickyCta = document.getElementById('stickyCta');
+    window.addEventListener('scroll', () => {
+      stickyCta.style.display = window.scrollY > 500 ? 'flex' : 'none';
+    }, { passive: true });
+  </script>
 </body>
 </html>

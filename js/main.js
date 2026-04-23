@@ -165,19 +165,8 @@ function initKitPaidTag() {
   }
 }
 
-/* Typeform embed helper */
-function openTypeform(typeformId) {
-  if (window.typeformEmbed) {
-    window.typeformEmbed.makePopup(`https://form.typeform.com/to/${typeformId}`, {
-      mode: 'popup',
-      hideHeaders: true,
-      hideFooter: true,
-      onSubmit: function() {
-        window.location.href = 'thankyou.html';
-      }
-    }).open();
-  } else {
-    window.open(`https://form.typeform.com/to/${typeformId}`, '_blank');
-  }
+/* Application form redirect helper (used by apply.html) */
+function goToApply() {
+  window.location.href = 'apply.html';
 }
 

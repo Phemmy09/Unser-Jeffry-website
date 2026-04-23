@@ -4,290 +4,479 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@unsertheanswer — Digital Consulting | Agency Growth</title>
-  <meta name="description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Learn to build and scale your consulting agency.">
+  <meta name="description" content="Digital Consulting, Agency Growth, and Prime Solution Media. Follow @unsertheanswer for tips on building and scaling your consulting agency.">
   <meta name="author" content="@unsertheanswer">
-
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="@unsertheanswer — Digital Consulting | Agency Growth">
   <meta property="og:description" content="Digital Consulting, Agency Growth, and Prime Solution Media.">
   <meta property="og:url" content="https://unsertheanswer.com">
   <meta property="og:image" content="assets/og-image.jpeg">
-
-  <!-- Favicon -->
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/jpeg" href="assets/favicon.jpeg">
 
-  <!-- Fonts -->
+  <!-- Fonts: Space Grotesk (display) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --bg:         #080c14;
+      --bg-card:    rgba(255, 255, 255, 0.042);
+      --bg-card-h:  rgba(255, 255, 255, 0.072);
+      --border:     rgba(255, 255, 255, 0.07);
+      --border-h:   rgba(255, 255, 255, 0.14);
+      --border-a:   rgba(59, 130, 246, 0.22);
+      --accent:     #3b82f6;
+      --accent-h:   #2563eb;
+      --accent-glow:rgba(59, 130, 246, 0.18);
+      --accent-soft:rgba(59, 130, 246, 0.08);
+      --text:       #f2f2f7;
+      --text-2:     rgba(255, 255, 255, 0.45);
+      --text-3:     rgba(255, 255, 255, 0.22);
+      --r-card:     18px;
+      --r-full:     999px;
+      --ease:       cubic-bezier(0.22, 1, 0.36, 1);
+      --font-head:  'Space Grotesk', system-ui, sans-serif;
+      --font-body:  'Inter', system-ui, sans-serif;
+    }
+
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
     body {
-      background: #080c14;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 3rem 1.25rem 4rem;
+      padding: 3.5rem 1.25rem 5rem;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* ---- Background glow ---- */
+    /* ─── Noise grain ─────────────────────────────────── */
     body::before {
       content: '';
-      position: fixed;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, transparent 65%);
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ---- Wrapper ---- */
+    /* ─── Background glow ─────────────────────────────── */
+    .bg-orb {
+      position: fixed; border-radius: 50%;
+      filter: blur(110px); pointer-events: none; z-index: 0;
+    }
+    .bg-orb--1 {
+      width: 640px; height: 640px;
+      background: radial-gradient(circle, rgba(59,130,246,0.14) 0%, transparent 70%);
+      top: -220px; left: 50%; transform: translateX(-50%);
+    }
+    .bg-orb--2 {
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
+      bottom: -160px; right: -100px;
+    }
+
+    /* ─── Page wrapper ────────────────────────────────── */
     .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
+      position: relative; z-index: 1;
+      width: 100%; max-width: 480px;
+      display: flex; flex-direction: column;
       align-items: center;
-    }
-
-    /* ---- Avatar ---- */
-    .profile-avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #3b82f6;
-      box-shadow: 0 0 0 4px rgba(59,130,246,0.2), 0 0 40px rgba(59,130,246,0.25);
-      margin-bottom: 1.25rem;
-    }
-
-    /* ---- Handle ---- */
-    .profile-handle {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.875rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    /* ---- Tagline ---- */
-    .profile-tagline {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      margin-bottom: 1.75rem;
-      line-height: 1.5;
-    }
-
-    /* ---- Social Icons ---- */
-    .social-row {
-      display: flex;
-      gap: 0.875rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .social-btn {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: rgba(255,255,255,0.7);
-      transition: all 0.25s ease;
-    }
-
-    .social-btn:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.25);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    .social-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
-
-    /* ---- Freebie Card ---- */
-    .freebie-card {
-      width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 20px;
-      padding: 2rem;
-      backdrop-filter: blur(12px);
-    }
-
-    .card-label {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #3b82f6;
-      margin-bottom: 0.875rem;
-    }
-
-    .card-label::before {
-      content: '';
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #3b82f6;
-      flex-shrink: 0;
-    }
-
-    .card-title {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.375rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-    }
-
-    .card-desc {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.5);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    /* ---- Opt-in Form ---- */
-    .optin-form {
-      display: flex;
       gap: 0.625rem;
     }
 
-    .optin-form input[type="email"] {
+    /* ─── Avatar ──────────────────────────────────────── */
+    .avatar-wrap {
+      position: relative;
+      width: 88px; height: 88px;
+      margin-bottom: 0.25rem;
+    }
+    .avatar-ring {
+      position: absolute; inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, #3b82f6, #818cf8, #3b82f6);
+      animation: spin 6s linear infinite;
+      opacity: 0.7;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .avatar-ring-mask {
+      position: absolute; inset: 2px;
+      border-radius: 50%;
+      background: var(--bg);
+    }
+    .avatar-img {
+      position: relative; z-index: 1;
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+
+    /* ─── Identity ────────────────────────────────────── */
+    .identity { text-align: center; width: 100%; margin-bottom: 0.5rem; }
+    .identity__name {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .identity__tagline {
+      font-size: 0.8375rem;
+      color: var(--text-2);
+      line-height: 1.5;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── Freebie card ────────────────────────────────── */
+    .freebie-card {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-a);
+      border-radius: var(--r-card);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+    }
+    .freebie-card:hover {
+      background: var(--bg-card-h);
+      border-color: rgba(59, 130, 246, 0.38);
+    }
+    /* Subtle top-edge glow line */
+    .freebie-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.5), transparent);
+    }
+
+    .freebie-badge {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      font-size: 0.6875rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.625rem;
+    }
+    .freebie-badge::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .freebie-title {
+      font-family: var(--font-head);
+      font-size: 1.125rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+    .freebie-sub {
+      font-size: 0.8125rem;
+      color: var(--text-2);
+      line-height: 1.55;
+      margin-bottom: 1.125rem;
+    }
+
+    .optin-row {
+      display: flex; gap: 0.5rem;
+    }
+    .optin-input {
       flex: 1;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.055);
+      border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 0.8125rem 1rem;
+      padding: 0.75rem 1rem;
       font-size: 0.875rem;
-      color: #fff;
+      color: var(--text);
+      font-family: var(--font-body);
       outline: none;
-      font-family: 'Inter', sans-serif;
       transition: border-color 0.2s, box-shadow 0.2s;
     }
-
-    .optin-form input[type="email"]::placeholder { color: rgba(255,255,255,0.3); }
-
-    .optin-form input[type="email"]:focus {
-      border-color: rgba(59,130,246,0.5);
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    .optin-input::placeholder { color: var(--text-3); }
+    .optin-input:focus {
+      border-color: rgba(59,130,246,0.45);
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
     }
-
-    .optin-form button {
+    .optin-btn {
       flex-shrink: 0;
-      background: #3b82f6;
+      background: var(--accent);
       color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.875rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      padding: 0.8125rem 1.25rem;
-      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 0.8125rem; font-weight: 600;
+      border: none; border-radius: 12px;
+      padding: 0.75rem 1.125rem;
+      cursor: pointer; white-space: nowrap;
       transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(59,130,246,0.3);
     }
-
-    .optin-form button:hover {
-      background: #2563eb;
+    .optin-btn:hover {
+      background: var(--accent-h);
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(59,130,246,0.4);
+      box-shadow: 0 6px 22px rgba(59,130,246,0.45);
     }
+    .optin-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
 
-    .optin-form button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-
-    /* ---- Links below card ---- */
-    .link-list {
+    /* ─── Featured link (course) ──────────────────────── */
+    .featured-link {
       width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.125rem 1.375rem;
+      background: linear-gradient(135deg, rgba(59,130,246,0.09) 0%, rgba(99,102,241,0.05) 100%);
+      border: 1px solid var(--border-a);
+      border-radius: var(--r-card);
+      text-decoration: none; color: var(--text);
+      transition: all 0.3s var(--ease);
+      position: relative; overflow: hidden;
+    }
+    .featured-link::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59,130,246,0.45), transparent);
+    }
+    .featured-link:hover {
+      background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(99,102,241,0.09) 100%);
+      border-color: rgba(59,130,246,0.4);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(59,130,246,0.15);
+    }
+    .featured-link:hover .fl-arrow { transform: translateX(3px); color: var(--accent); }
+
+    .fl-icon {
+      width: 42px; height: 42px; flex-shrink: 0;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-a);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent);
+    }
+    .fl-icon svg { width: 20px; height: 20px; }
+    .fl-body { flex: 1; }
+    .fl-label {
+      font-size: 0.6875rem; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.2rem;
+    }
+    .fl-title {
+      font-family: var(--font-head);
+      font-size: 0.9375rem; font-weight: 700;
+      letter-spacing: -0.01em; line-height: 1.25;
+    }
+    .fl-arrow {
+      width: 18px; height: 18px; flex-shrink: 0;
+      color: var(--text-3);
+      transition: transform 0.3s var(--ease), color 0.3s var(--ease);
     }
 
-    .link-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.5rem;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 14px;
-      text-decoration: none;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.875rem;
-      font-weight: 600;
-      transition: all 0.25s ease;
+    /* ─── Section divider ─────────────────────────────── */
+    .divider {
+      width: 100%;
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: var(--border);
+    }
+    .divider-label {
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-3); white-space: nowrap;
     }
 
-    .link-item:hover {
+    /* ─── Standard link card ──────────────────────────── */
+    .link-card {
+      width: 100%;
+      display: flex; align-items: center; gap: 0.875rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-card);
+      text-decoration: none; color: var(--text);
+      transition: all 0.28s var(--ease);
+    }
+    .link-card:hover {
+      background: var(--bg-card-h);
+      border-color: var(--border-h);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+    .link-card:hover .lc-arrow { transform: translateX(3px); color: var(--text-2); }
+
+    .lc-icon {
+      width: 38px; height: 38px; flex-shrink: 0;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+      transition: background 0.28s var(--ease), border-color 0.28s var(--ease);
+    }
+    .link-card:hover .lc-icon {
       background: rgba(255,255,255,0.07);
-      border-color: rgba(59,130,246,0.3);
-      color: #fff;
+      border-color: var(--border-h);
+    }
+    .lc-icon svg { width: 17px; height: 17px; fill: currentColor; }
+
+    .lc-body { flex: 1; min-width: 0; }
+    .lc-title {
+      font-family: var(--font-head);
+      font-size: 0.9rem; font-weight: 600;
+      letter-spacing: -0.01em; line-height: 1.3;
+    }
+    .lc-sub {
+      font-size: 0.75rem; color: var(--text-3);
+      margin-top: 0.125rem; line-height: 1.4;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
 
-    .link-item svg {
-      width: 16px;
-      height: 16px;
-      opacity: 0.5;
-      flex-shrink: 0;
+    .lc-arrow {
+      width: 16px; height: 16px; flex-shrink: 0;
+      color: var(--text-3);
+      transition: transform 0.28s var(--ease), color 0.28s var(--ease);
     }
 
-    /* ---- Footer ---- */
-    .page-footer {
-      position: relative;
-      z-index: 1;
-      margin-top: 2.5rem;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
+    /* ─── Social icons ────────────────────────────────── */
+    .social-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.625rem;
+    }
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: all 0.25s var(--ease);
+    }
+    .social-btn:hover {
+      background: var(--accent-soft);
+      border-color: rgba(59,130,246,0.35);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+    }
+    .social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    .footer {
+      margin-top: 1rem;
+      font-size: 0.6875rem;
+      color: var(--text-3);
       text-align: center;
+      letter-spacing: 0.02em;
     }
 
+    /* ─── Mobile ──────────────────────────────────────── */
     @media (max-width: 400px) {
-      .optin-form { flex-direction: column; }
-      .optin-form button { width: 100%; }
+      body { padding: 2.5rem 1rem 4rem; }
+      .identity__name { font-size: 1.875rem; }
+      .optin-row { flex-direction: column; }
+      .optin-btn { width: 100%; text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+
   <div class="page">
 
-    <!-- Avatar -->
-    <img src="assets/favicon.jpeg" alt="@unsertheanswer" class="profile-avatar">
+    <!-- ── Avatar ─────────────────────── -->
+    <div class="avatar-wrap">
+      <div class="avatar-ring"></div>
+      <div class="avatar-ring-mask"></div>
+      <img src="assets/avatar.jpeg" alt="@unsertheanswer" class="avatar-img">
+    </div>
 
-    <!-- Handle -->
-    <h1 class="profile-handle">@unsertheanswer</h1>
+    <!-- ── Identity ───────────────────── -->
+    <div class="identity">
+      <h1 class="identity__name">@unsertheanswer</h1>
+      <p class="identity__tagline">Digital Consulting &nbsp;·&nbsp; Agency Growth &nbsp;·&nbsp; Prime Solution Media</p>
+    </div>
 
-    <!-- Tagline -->
-    <p class="profile-tagline">Digital Consulting &nbsp;|&nbsp; Agency Growth &nbsp;|&nbsp; Prime Solution Media</p>
+    <!-- ── Freebie Signup ─────────────── -->
+    <div class="freebie-card">
+      <div class="freebie-badge">Free Resource</div>
+      <h2 class="freebie-title">Agency Growth Blueprint</h2>
+      <p class="freebie-sub">The exact framework I used to scale my consulting agency — free.</p>
+      <form data-email-form data-redirect="freebie-download.html">
+        <div class="optin-row">
+          <input type="email" class="optin-input" placeholder="Enter your email" required aria-label="Email address">
+          <button type="submit" class="optin-btn">Get Access</button>
+        </div>
+      </form>
+    </div>
 
-    <!-- Social Icons -->
+    <!-- ── Course (featured) ──────────── -->
+    <a href="course.html" class="featured-link">
+      <div class="fl-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/></svg>
+      </div>
+      <div class="fl-body">
+        <div class="fl-label">The Masterclass</div>
+        <div class="fl-title">Build &amp; Scale Your Consulting Agency</div>
+      </div>
+      <svg class="fl-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <!-- ── Divider ────────────────────── -->
+    <div class="divider"><span class="divider-label">My Companies</span></div>
+
+    <!-- ── Company Links ──────────────── -->
+    <a href="https://primesolutionmedia.com" class="link-card" target="_blank" rel="noopener">
+      <div class="lc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="lc-body">
+        <div class="lc-title">Prime Solution Media</div>
+        <div class="lc-sub">Full-Service Digital Agency — Start-Ups &amp; Enterprise</div>
+      </div>
+      <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <a href="http://revivecommerce.com/" class="link-card" target="_blank" rel="noopener">
+      <div class="lc-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>
+      </div>
+      <div class="lc-body">
+        <div class="lc-title">Revive Commerce</div>
+        <div class="lc-sub">Ecommerce Accelerator for Brands</div>
+      </div>
+      <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <a href="https://revivenutra.co" class="link-card" target="_blank" rel="noopener">
+      <div class="lc-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="lc-body">
+        <div class="lc-title">Revive Nutra</div>
+        <div class="lc-sub">My Natural Supplement Brand</div>
+      </div>
+      <svg class="lc-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <!-- ── Divider ────────────────────── -->
+    <div class="divider"><span class="divider-label">Find Me Online</span></div>
+
+    <!-- ── Social Icons ───────────────── -->
     <div class="social-row">
 
       <!-- TikTok -->
@@ -310,54 +499,17 @@
         <svg viewBox="0 0 24 24"><path d="M11.57 4.71h1.71v5.14h-1.71V4.71zm4.7 0h1.72v5.14h-1.71V4.71zM4.29 0L1.71 4.29v17.14h5.15V24h3.42l3.43-2.57h4.28L23.14 16V0H4.29zm17.14 14.86l-3.43 3.43h-5.14L9.43 21.7v-3.43H5.14V1.71h16.29v13.15z"/></svg>
       </a>
 
-    </div>
-
-    <!-- Freebie Opt-in Card -->
-    <div class="freebie-card">
-      <div class="card-label">Free Resource</div>
-      <h2 class="card-title">Agency Growth Blueprint</h2>
-      <p class="card-desc">Get the exact framework I used to scale my consulting agency.</p>
-      <form class="optin-form" data-email-form data-redirect="freebie.html">
-        <input type="email" placeholder="Enter your email" required aria-label="Email address">
-        <button type="submit">Get Free Access</button>
-      </form>
-    </div>
-
-    <!-- Quick Link List -->
-    <div class="link-list">
-
-      <a href="course.html" class="link-item">
-        The Masterclass — Agency Accelerator
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="https://primesolutionmedia.com" class="link-item" target="_blank" rel="noopener">
-        Prime Solution Media
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="http://revivecommerce.com/" class="link-item" target="_blank" rel="noopener">
-        Revive Commerce — Ecommerce Accelerator
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="https://revivenutra.co" class="link-item" target="_blank" rel="noopener">
-        Revive Nutra — Supplement Brand
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-
-      <a href="https://calendly.com/unserjaffry/dax-new-client-meeting" class="link-item" target="_blank" rel="noopener">
-        Book a 1-on-1 Strategy Call
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      <!-- Kick -->
+      <a href="https://kick.com/unsertheanswer" class="social-btn" target="_blank" rel="noopener" aria-label="Kick">
+        <svg viewBox="0 0 24 24"><path d="M2 2h6.5v6.5H15V2h7v20h-7v-6.5H8.5V22H2V2z"/></svg>
       </a>
 
     </div>
+
+    <!-- ── Footer ─────────────────────── -->
+    <p class="footer">&copy; 2026 @unsertheanswer &mdash; Prime Solution Media</p>
 
   </div>
-
-  <footer class="page-footer">
-    &copy; 2026 @unsertheanswer &mdash; Prime Solution Media
-  </footer>
 
   <script src="js/main.js"></script>
 </body>
