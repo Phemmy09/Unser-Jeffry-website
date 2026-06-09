@@ -1,2 +1,7 @@
-# Ignore large video files
+.vercel
+node_modules/
+package-lock.json
+package.json
+index (1).html
 *.mp4
+
