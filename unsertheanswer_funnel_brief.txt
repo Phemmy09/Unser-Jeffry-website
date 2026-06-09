@@ -1,0 +1,233 @@
+@unstheanswer
+Course Funnel — Content Structure & Build Brief
+Prepared for: Web Development Team  |  Brand: Prime Solution Media / PSM
+Version 1.0  |  Confidential
+1. Project Overview
+This document outlines the full build brief for the @unstheanswer course funnel — a conversion-focused digital ecosystem that captures leads, sells a digital consulting course, and automates the post-purchase experience. The funnel sits under the Prime Solution Media (PSM) brand umbrella and should visually align with PSM's existing design language.
+Domain Options
+Subdomain (recommended for brand continuity): unstheanswer.primesolutionmedia.com
+Standalone domain: unstheanswer.com
+Design Direction
+Match PSM's existing design style — dark, premium, modern
+Built in Framer (see templates section for references)
+Two primary pages: Linktree-style hub page + Course landing page
+2. Reference Sites & Design Inspiration
+The following sites should be studied for design, copy, and funnel structure before beginning any builds.
+Reference
+URL
+Agency Site Ref 1
+https://joinbrezscales.com
+Agency Site Ref 2
+https://brezmarketing.net
+Framer: Linktree Style
+https://www.framer.com/marketplace/templates/simplink/
+Framer: Links Page Alt
+https://www.framer.com/marketplace/templates/linkspage/
+Framer: Course Landing
+https://www.framer.com/marketplace/templates/educate/
+3. Page 1 — Unique Abstract Linktree Hub
+A visually distinct, brand-forward hub page (not a generic Linktree) that serves as the central traffic junction for @unstheanswer. All inbound traffic — from social bios, ads, DMs, and ManyChat flows — routes here first.
+3.1 Purpose
+Single link for all bio traffic across TikTok, Instagram, YouTube, Twitch, Kick
+Route visitors to the right destination based on intent
+Capture emails via freebie opt-in
+3.2 Link Destinations
+Freebie opt-in — email capture → newsletter/email sequence
+Course landing page
+PSM agency site
+YouTube channel
+TikTok profile
+Instagram (primary + secondary if applicable)
+Twitch / Kick streams
+3.3 Design Notes
+Abstract / editorial aesthetic — not a standard grid of buttons
+Use Framer templates as starting reference (Simplink / Linkspage), then customize heavily
+Must feel premium and on-brand with PSM / personal brand identity
+Mobile-first — majority of traffic is mobile
+4. Page 2 — Course Landing Page
+The primary conversion page. Visitors land here to understand the offer, watch the VSL, and submit their application via Typeform before hitting the Stripe checkout.
+4.1 Above the Fold
+Strong headline: promise of outcome — scaling a digital consulting agency
+Subheadline: credibility + specificity
+VSL player embedded (see Section 5 for VSL brief)
+Primary CTA button → Typeform application
+4.2 What They Get (Value Stack)
+This section breaks down everything included in the course. Build as a visual checklist or card grid:
+Private Discord community
+Whop platform: recorded video lectures + course materials
+Contract bidding support (Uns provides)
+Group coaching calls
+Live events
+1-on-1 direct messaging access
+4.3 Application Flow (CTA Sequence)
+Step
+Stage
+Detail
+01
+CTA Click
+Visitor clicks 'Apply Now' button on landing page
+02
+Typeform
+Collects name, email, background info, and intent
+03
+Stripe Checkout
+Payment page served post-Typeform completion
+04
+Email Segmentation
+Email added to Kit (ConvertKit) — two buckets: paid vs. incomplete
+05
+Unpaid Sequence
+Automated re-engagement sequence for form fills who didn't purchase
+06
+Paid Sequence
+ChatGPT API-powered auto-response for confirmed buyers
+07
+Thank You Page
+Video message from Uns + onboarding instructions (see Section 7)
+5. VSL — Video Sales Letter
+A scripted, high-production video embedded at the top of the landing page. This is the primary sales mechanism.
+5.1 Content Brief
+Hook: Pattern interrupt — something visually compelling in the first 3 seconds
+Problem: Pain points of freelancers / aspiring agency owners who can't scale
+Agitate: Show the gap between where they are and where they want to be
+Solution: Introduce the course as the roadmap
+Pitch: Walk through the offer stack (Discord, Whop, calls, events, DM access)
+Social proof: Results, testimonials, credibility indicators
+CTA: Direct application prompt with urgency framing
+5.2 Production Notes
+Script first — then record with confidence
+Cool cinematic edits, B-roll, text overlays — high production value
+Flexing context (lifestyle, proof) woven in naturally — not cringe, aspirational
+Edit handled by Ali / Bilal Faseeh or Jon (videographer)
+6. Email Automation — Kit (ConvertKit) Setup
+6.1 Two Segments
+Bucket A: Filled, Did Not Pay
+Bucket B: Paid / Confirmed
+Manual draft re-engagement email sequence. 3–5 emails covering objection handling, urgency, and value reminders.
+ChatGPT API automated response flow. Welcome, onboarding instructions, community links, and next steps delivered automatically.
+7. Thank You Page — Post-Purchase Onboarding
+A dedicated page that loads immediately after Stripe payment confirmation. Sets the tone and eliminates buyer confusion.
+7.1 Page Elements
+Personal video from Uns — congratulations + what's next
+Step-by-step onboarding checklist displayed on page
+7.2 Onboarding Steps (in order)
+Join the private Discord server (link provided)
+Join the Whop course platform to access recorded lectures and materials
+Add the Zoom webinar / group call to your calendar
+Check your email for the welcome sequence
+8. Course Curriculum — Recording Brief
+All modules to be recorded as professional, structured video lectures and uploaded to Whop. Each module should include lecture video + downloadable materials (pitch decks, tracking sheets, strategy docs).
+8.1 Module Outline
+Module
+Topic
+Deliverables
+01
+Skill & Niche Selection
+Framework worksheet, niche research template
+02
+Team Building & Operations
+Hiring checklist, org chart template, revenue share model
+03
+Digital Presence
+Website brief, social profile setup guide
+04
+Paid Advertising
+Ad strategy deck, Meta/Google campaign structure walkthrough
+05
+Personal Brand
+Content OS, scripting guide, posting schedule
+06
+Cold Outreach — LinkedIn & Email
+Message templates, sequence scripts, tracking sheet
+07
+Cold Calling
+Call script, objection handling guide
+08
+Door Knocking / In-Person
+Field sales playbook, pitch walkthrough
+9. Paid Traffic & Ads Strategy
+9.1 Platforms
+Meta (Instagram Reels / Facebook)
+TikTok Ads
+9.2 Creative Direction
+Flexing / lifestyle content — aspirational, not cringey
+Show results, revenue, freedom — visual proof
+Short-form videos (15–30 sec) driving profile visits or direct to landing page
+CTA in caption: link in bio, DM a keyword, or visit link
+10. ManyChat Premium — Lead Generation Automation
+ManyChat automations are configured to trigger off comments and DMs on TikTok and Instagram content, enabling passive lead capture at scale.
+10.1 Trigger Flows
+CTA videos about AI tools or walkthroughs → comment or DM a keyword to receive a freebie
+Triggered DM sends a link to a freebie opt-in page
+10.2 Freebie Opt-In Flow
+Viewer comments a keyword or DMs (triggered by ManyChat)
+ManyChat sends a link to the freebie opt-in landing page
+User submits email on opt-in page
+Freebie delivered via email automatically (Kit)
+Email enters unpaid nurture sequence (re-engagement → course CTA)
+11. Tech Stack — Tools Required
+Category
+Tool
+Use
+Page Builder
+Framer
+Linktree hub + course landing page
+Application Form
+Typeform
+Lead qualification form
+Payment
+Stripe
+Checkout and payment processing
+Email Marketing
+Kit (ConvertKit)
+Email sequences, segmentation
+AI Email Automation
+ChatGPT API
+Auto-response for paid bucket
+Course Platform
+Whop
+Recorded lectures, course materials access
+Community
+Discord
+Student community hub
+Video Calls
+Zoom
+Group coaching webinars
+DM Automation
+ManyChat Premium
+Comment/DM triggers → freebie opt-in
+Ads
+Meta Ads Manager
+Instagram Reels + Facebook campaigns
+Ads
+TikTok Ads Manager
+TikTok short-form ad campaigns
+Hosting
+Domain / Subdomain
+unstheanswer.com or subdomain under PSM
+12. Full Funnel Workflow — End to End
+The diagram below maps the complete visitor journey from first impression to onboarded student.
+TRAFFIC IN
+Ads (Meta/TikTok) → Profile → Bio Link
+Organic content → ManyChat trigger → DM flow
+HUB PAGE
+Linktree-style page → routes to freebie opt-in, course landing page, socials, or agency site
+FREEBIE OPT-IN
+User submits email → added to Kit unpaid nurture sequence → receives freebie
+COURSE LANDING PAGE
+VSL → value stack → CTA button
+APPLICATION
+Typeform → collects info + email
+CHECKOUT
+Stripe → payment completed
+EMAIL SEGMENTATION
+Kit splits into Bucket A (unpaid) and Bucket B (paid)
+UNPAID SEQUENCE
+Manual email sequence: 3–5 re-engagement emails → push back to landing page
+PAID AUTOMATION
+ChatGPT API auto-welcome + onboarding instructions delivered
+THANK YOU PAGE
+Video from Uns → Discord link → Whop link → Zoom calendar invite
+STUDENT ONBOARDED
+Discord + Whop access confirmed → active in course community
+@unstheanswer × Prime Solution Media  |  Internal Build Brief — Confidential

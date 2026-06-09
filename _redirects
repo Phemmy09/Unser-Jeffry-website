@@ -1,0 +1,4 @@
+# Netlify redirects (if deploying to Netlify instead of Vercel)
+/course    /course.html    200
+/freebie   /freebie.html   200
+/thankyou  /thankyou.html  200

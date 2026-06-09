@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Central directory for @unstheanswer. Access the Free Agency Growth Blueprint, apply for the Digital Consulting Masterclass, or find me online.">
+  <meta name="author" content="@unstheanswer">
+  <meta property="og:title" content="@unstheanswer — Central Hub">
+  <meta property="og:description" content="Central directory for @unstheanswer. Access the Free Agency Growth Blueprint, apply for the Digital Consulting Masterclass, or find me online.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>@unstheanswer — Central Hub</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Page-specific styling for the Linktree Hub */
+    .hub-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: clamp(3rem, 6vw, 6rem) 1.25rem;
+      z-index: 10;
+    }
+
+    .hub-container {
+      width: 100%;
+      max-width: 580px;
+      text-align: center;
+      animation: hubEntrance 0.8s var(--ease-out) both;
+    }
+
+    @keyframes hubEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ---- Profile Section ---- */
+    .hub-profile {
+      margin-bottom: 2rem;
+    }
+
+    .hub-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #7c3aed);
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
+    }
+
+    .hub-avatar-logo {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: -0.05em;
+    }
+
+    .hub-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.25rem);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hub-subtitle {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+    }
+
+    /* ---- Social Divider ---- */
+    .social-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 2rem 0 1.5rem;
+      width: 100%;
+    }
+
+    .social-divider::before,
+    .social-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .social-divider::before {
+      margin-right: 1.25rem;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08));
+    }
+
+    .social-divider::after {
+      margin-left: 1.25rem;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), transparent);
+    }
+
+    .social-divider-text {
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ---- Social Icons ---- */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .social-icon-btn {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 50%;
+      color: var(--text-secondary);
+      transition: all 0.3s var(--ease-out);
+      cursor: pointer;
+    }
+
+    .social-icon-btn:hover {
+      color: var(--text-primary);
+      border-color: rgba(59, 130, 246, 0.25);
+      background: rgba(59, 130, 246, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(59, 130, 246, 0.15);
+    }
+
+    .social-icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ---- Link Cards ---- */
+    .hub-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .hub-card {
+      background: linear-gradient(135deg, rgba(22, 22, 31, 0.5) 0%, rgba(10, 10, 15, 0.6) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem 1.75rem;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: all 0.3s var(--ease-out);
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    }
+
+    .hub-card:hover {
+      background: linear-gradient(135deg, rgba(28, 28, 40, 0.7) 0%, rgba(16, 16, 24, 0.8) 100%);
+      border-color: rgba(59, 130, 246, 0.2);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.05);
+    }
+
+    .hub-card-content {
+      flex: 1;
+    }
+
+    .hub-card-title {
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .hub-card-desc {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .hub-card-arrow {
+      color: var(--text-muted);
+      transition: all 0.3s var(--ease-out);
+      flex-shrink: 0;
+    }
+
+    .hub-card:hover .hub-card-arrow {
+      color: var(--accent-light);
+      transform: translateX(4px);
+    }
+
+    .hub-card-arrow svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ---- Footer ---- */
+    .hub-footer {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      width: 100%;
+    }
+
+    .hub-footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background effects -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow--blue" style="top: 25%; left: 50%; transform: translate(-50%, -50%); opacity: 0.15;"></div>
+  <div class="bg-glow bg-glow--purple" style="bottom: 10%; left: 50%; transform: translate(-50%, 50%); opacity: 0.08;"></div>
+
+  <main class="hub-page">
+    <div class="hub-container">
+
+      <!-- Profile -->
+      <header class="hub-profile">
+        <div class="hub-avatar">
+          <span class="hub-avatar-logo">U</span>
+        </div>
+        <h1 class="hub-title">Uns The Answer</h1>
+        <p class="hub-subtitle">Digital Consulting &middot; Agency Growth &middot; Prime Solution Media</p>
+      </header>
+
+      <!-- Social Media Platform Section -->
+      <div class="social-divider">
+        <span class="social-divider-text">Find Me Online</span>
+      </div>
+
+      <div class="social-icons">
+        <!-- TikTok -->
+        <a href="https://tiktok.com/@unstheanswer" target="_blank" class="social-icon-btn" aria-label="TikTok">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a href="https://instagram.com/unstheanswer" target="_blank" class="social-icon-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <!-- YouTube -->
+        <a href="https://youtube.com/@unstheanswer" target="_blank" class="social-icon-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/>
+            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+          </svg>
+        </a>
+        <!-- Twitch -->
+        <a href="https://twitch.tv/unstheanswer" target="_blank" class="social-icon-btn" aria-label="Twitch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 2H3v16h5v4l4-4h5l4-4V2zm-10 9H9V6h2v5zm4 0h-2V6h2v5z"/>
+          </svg>
+        </a>
+        <!-- Hoo.be -->
+        <a href="https://hoo.be/unstheanswer" target="_blank" class="social-icon-btn" aria-label="Hoo.be">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7 4h3v6h4V4h3v16h-3v-7h-4v7H7V4z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Links List -->
+      <div class="hub-links">
+        
+        <!-- Link 1: Freebie -->
+        <a href="freebie.html" class="hub-card">
+          <div class="hub-card-content">
+            <div class="hub-card-title">Free Agency Growth Blueprint</div>
+            <div class="hub-card-desc">Download the exact client acquisition and operations roadmap (Free PDF)</div>
+          </div>
+          <div class="hub-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Link 2: Course Landing -->
+        <a href="course.html" class="hub-card">
+          <div class="hub-card-content">
+            <div class="hub-card-title">Digital Consulting Masterclass</div>
+            <div class="hub-card-desc">Watch our overview VSL and apply to build and scale your agency</div>
+          </div>
+          <div class="hub-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Link 2.5: Apply to have me grow your company -->
+        <a href="https://primesolutionmedia.com/apply/form/" target="_blank" class="hub-card">
+          <div class="hub-card-content">
+            <div class="hub-card-title">Apply to have me grow your company</div>
+            <div class="hub-card-desc">Partner with us to scale your client acquisition and operations</div>
+          </div>
+          <div class="hub-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+        <!-- Link 3: PSM Agency -->
+        <a href="https://primesolutionmedia.com" target="_blank" class="hub-card">
+          <div class="hub-card-content">
+            <div class="hub-card-title">Prime Solution Media</div>
+            <div class="hub-card-desc">Our flagship digital consulting and growth infrastructure agency</div>
+          </div>
+          <div class="hub-card-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Footer -->
+      <footer class="hub-footer">
+        <p>&copy; 2026 Uns The Answer &times; Prime Solution Media. All rights reserved.</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
